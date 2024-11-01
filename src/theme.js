@@ -4,10 +4,9 @@ const theme = extendTheme({
 	colors: {
 		primary: '#0068ef',
 		secondary: '#003c8a',
-		tertiary: '#c69709',
-		accent: '#fefaee',
-		background: '#fffefa',
-		text: '#ffffff',
+		accent: '#ffffff',
+		background: '#ffffff',
+		text: '#373737',
 		textLight: '#adadad',
 	},
 	styles: {

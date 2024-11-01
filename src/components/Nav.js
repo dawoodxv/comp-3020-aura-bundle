@@ -7,12 +7,19 @@ import {
   Image,
   HStack,
   useBreakpointValue,
+  useTheme,
 } from "@chakra-ui/react";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const isLargeScreen = useBreakpointValue({ base: false, md: true });
+  const location = useLocation();
+  const theme = useTheme(); // Get the current theme
+
+  const isHome = location.pathname === "/";
+  const isBuildBundle = location.pathname === "/buildBundle";
+  const isBag = location.pathname === "/bag";
 
   return (
     <Box bg="white" color="primary" py={3} px={6} boxShadow="sm">
@@ -21,20 +28,22 @@ const Navbar = () => {
           as={RouterLink}
           to="/"
           aria-label="Home"
+          bg={theme.colors.gray[200]}
           icon={<Image src="/images/logo.svg" alt="Logo" height="30px" />}
           isRound
           size="lg"
-          _hover={{ bg: "secondary", color: "white" }}
         />
 
         {isLargeScreen && (
-          <HStack spacing={4} flex="1" justify="center">
+          <HStack spacing={4} flex="1" justify="center" mx="2">
             <Button
               as={RouterLink}
               to="/"
               aria-label="Home"
               borderRadius="full"
               size="sm"
+              bg={isHome ? "primary" : theme.colors.gray[200]}
+              color={isHome ? "white" : "black"}
               _hover={{ bg: "secondary", color: "white" }}
             >
               Home
@@ -45,39 +54,35 @@ const Navbar = () => {
               aria-label="Build Your Own Bundle"
               borderRadius="full"
               size="sm"
+              bg={isBuildBundle ? "primary" : theme.colors.gray[200]}
+              color={isBuildBundle ? "white" : "black"}
               _hover={{ bg: "secondary", color: "white" }}
             >
-              Build Your Own Bundle
+              Build a Bundle
             </Button>
             <Button
-              as={RouterLink}
-              to="/personalized-bundle"
               aria-label="Personalized Bundle"
               disabled
               borderRadius="full"
               size="sm"
               _hover={{ bg: "secondary", color: "white" }}
             >
-              Personalized Bundle
+              Personalized Bundles
             </Button>
             <Button
-              as={RouterLink}
-              to="/prebuilt-bundles"
               aria-label="Prebuilt Bundles"
               disabled
               borderRadius="full"
               size="sm"
               _hover={{ bg: "secondary", color: "white" }}
             >
-              Prebuilt Bundles
+              Our Bundles
             </Button>
           </HStack>
         )}
 
         <HStack spacing={4}>
           <IconButton
-            as={RouterLink}
-            to="/favorites"
             aria-label="Favorites"
             icon={<FaHeart />}
             disabled
@@ -92,11 +97,11 @@ const Navbar = () => {
             icon={<FaShoppingBag />}
             isRound
             size="lg"
+            bg={isBag ? "primary" : theme.colors.gray[200]}
+            color={isBag ? "white" : "black"}
             _hover={{ bg: "secondary", color: "white" }}
           />
           <Button
-            as={RouterLink}
-            to="/sign-in"
             aria-label="Sign In"
             disabled
             borderRadius="full"

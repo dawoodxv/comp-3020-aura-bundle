@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "brand": "Brand A",
+    "name": "Product 1",
+    "type": "Serum",
+    "price": 19.99,
+    "image": "path/to/image1.jpg"
+  },
+  {
+    "id": 2,
+    "brand": "Brand B",
+    "name": "Product 2",
+    "type": "Moisturizer",
+    "price": 25.00,
+    "image": "path/to/image2.jpg"
+  }
+]

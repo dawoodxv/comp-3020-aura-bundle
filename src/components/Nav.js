@@ -97,7 +97,7 @@ const Navbar = () => {
             icon={<FaShoppingBag />}
             isRound
             size="lg"
-            bg={isBag ? "secondary" : theme.colors.gray[200]}
+            bg={isBag ? "primary" : theme.colors.gray[200]}
             color={isBag ? "white" : "black"}
             _hover={{ bg: "secondary", color: "white" }}
           />

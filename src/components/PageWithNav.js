@@ -4,12 +4,13 @@ import { Outlet } from 'react-router-dom';
 import PropTypes from "prop-types";
 import Nav from "./Nav";
 import HomePage from "./HomePage";
+import BuildBundle from "./BuildBundle";
 
 const PageWithNav = ({ homePage, bag, buildBundle }) => {
   return (
     <Box>
       <Nav />
-      {homePage ? <HomePage /> : <Outlet />}
+      {homePage ? <HomePage /> : buildBundle ? <BuildBundle /> : <Outlet />}
     </Box>
   );
 };

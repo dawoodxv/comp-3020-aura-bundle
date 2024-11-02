@@ -1,18 +1,289 @@
 [
   {
     "id": 1,
-    "brand": "Brand A",
-    "name": "Product 1",
-    "type": "Serum",
-    "price": 19.99,
-    "image": "path/to/image1.jpg"
+    "brand": "Cetaphil",
+    "name": "Gentle Skin Cleanser",
+    "type": "Cleanser",
+    "price": 14.47,
+    "image": "./images/1.jpg"
   },
   {
     "id": 2,
-    "brand": "Brand B",
-    "name": "Product 2",
+    "brand": "CeraVe",
+    "name": "Foaming Face Wash",
+    "type": "Cleanser",
+    "price": 21.28,
+    "image": "./images/2.jpg"
+  },
+  {
+    "id": 3,
+    "brand": "CeraVe",
+    "name": "Hydrating Cleanser",
+    "type": "Cleanser",
+    "price": 14.93,
+    "image": "./images/3.jpg"
+  },
+  {
+    "id": 4,
+    "brand": "CeraVe",
+    "name": "Salicylic Acid Cleanser",
+    "type": "Cleanser",
+    "price": 24.99,
+    "image": "./images/4.jpg"
+  },
+  {
+    "id": 5,
+    "brand": "CeraVe",
+    "name": "Oil Cleanser",
+    "type": "Cleanser",
+    "price": 19.99,
+    "image": "./images/5.jpg"
+  },
+  {
+    "id": 6,
+    "brand": "La Roche-Posay",
+    "name": "Face Wash Gel Cleanser",
+    "type": "Cleanser",
+    "price": 24.65,
+    "image": "./images/6.jpg"
+  },
+  {
+    "id": 7,
+    "brand": "Neutrogena",
+    "name": "Hydrating Cleansing Gel",
+    "type": "Cleanser",
+    "price": 15.97,
+    "image": "./images/7.jpg"
+  },
+  {
+    "id": 8,
+    "brand": "e.l.f.",
+    "name": "Cosmetics Holy Hydration",
+    "type": "Cleanser",
+    "price": 16.98,
+    "image": "./images/8.jpg"
+  },
+  {
+    "id": 9,
+    "brand": "The Face Shop",
+    "name": "Rice Water Bright Cleansing Foam",
+    "type": "Cleanser",
+    "price": 16.99,
+    "image": "./images/9.jpg"
+  },
+  {
+    "id": 10,
+    "brand": "CeraVe",
+    "name": "Moisturizing Lotion",
     "type": "Moisturizer",
-    "price": 25.00,
-    "image": "path/to/image2.jpg"
+    "price": 22.77,
+    "image": "./images/10.jpg"
+  },
+  {
+    "id": 11,
+    "brand": "Aveeno",
+    "name": "Daily Moisturizing Lotion",
+    "type": "Moisturizer",
+    "price": 21.28,
+    "image": "./images/11.jpg"
+  },
+  {
+    "id": 12,
+    "brand": "Cetaphil",
+    "name": "Hydrating Body Lotion",
+    "type": "Moisturizer",
+    "price": 14.47,
+    "image": "./images/12.jpg"
+  },
+  {
+    "id": 13,
+    "brand": "Neutrogena",
+    "name": "Hydro Boost Face Moisturizer",
+    "type": "Moisturizer",
+    "price": 26.90,
+    "image": "./images/13.jpg"
+  },
+  {
+    "id": 14,
+    "brand": "e.l.f.",
+    "name": "Holy Hydration",
+    "type": "Moisturizer",
+    "price": 12.98,
+    "image": "./images/14.jpg"
+  },
+  {
+    "id": 15,
+    "brand": "CeraVe",
+    "name": "Moisturizing Cream",
+    "type": "Moisturizer",
+    "price": 29.71,
+    "image": "./images/15.jpg"
+  },
+  {
+    "id": 16,
+    "brand": "La Roche-Posay",
+    "name": "Toleriane Sensitive Face Cream",
+    "type": "Moisturizer",
+    "price": 23.37,
+    "image": "./images/16.jpg"
+  },
+  {
+    "id": 17,
+    "brand": "Pyunkang Yul",
+    "name": "Calming Moisture Barrier Cream",
+    "type": "Moisturizer",
+    "price": 16.98,
+    "image": "./images/17.jpg"
+  },
+  {
+    "id": 18,
+    "brand": "NIVEA",
+    "name": "Cocoa Butter Body Lotion",
+    "type": "Moisturizer",
+    "price": 8.37,
+    "image": "./images/18.jpg"
+  },
+  {
+    "id": 19,
+    "brand": "CeraVe",
+    "name": "Resurfacing RETINOL Serum",
+    "type": "Serum",
+    "price": 21.88,
+    "image": "./images/19.jpg"
+  },
+  {
+    "id": 20,
+    "brand": "Garnier",
+    "name": "Vitamin C Serum",
+    "type": "Serum",
+    "price": 14.97,
+    "image": "./images/20.jpg"
+  },
+  {
+    "id": 21,
+    "brand": "La Roche-Posay",
+    "name": "B5 Anti-Aging Serum",
+    "type": "Serum",
+    "price": 47.50,
+    "image": "./images/21.jpg"
+  },
+  {
+    "id": 22,
+    "brand": "Garnier",
+    "name": "Aloe Vera Serum",
+    "type": "Serum",
+    "price": 14.97,
+    "image": "./images/22.jpg"
+  },
+  {
+    "id": 23,
+    "brand": "Neutrogena",
+    "name": "Hyaluronic Acid Face Serum",
+    "type": "Serum",
+    "price": 18.48,
+    "image": "./images/23.jpg"
+  },
+  {
+    "id": 24,
+    "brand": "Cetaphil",
+    "name": "Radiance Brightening Serum",
+    "type": "Serum",
+    "price": 25.48,
+    "image": "./images/24.jpg"
+  },
+  {
+    "id": 25,
+    "brand": "Q+A",
+    "name": "Hyaluronic Acid Serum",
+    "type": "Serum",
+    "price": 14.00,
+    "image": "./images/25.jpg"
+  },
+  {
+    "id": 26,
+    "brand": "La Roche-Posay",
+    "name": "Pure Vitamin C Serum",
+    "type": "Serum",
+    "price": 58.65,
+    "image": "./images/26.jpg"
+  },
+  {
+    "id": 27,
+    "brand": "Garnier",
+    "name": "Charcoal Serum",
+    "type": "Serum",
+    "price": 14.97,
+    "image": "./images/27.jpg"
+  },
+  {
+    "id": 28,
+    "brand": "Neutrogena",
+    "name": "Ultra Sheer Dry-Touch Sunscreen",
+    "type": "Sunscreen",
+    "price": 13.50,
+    "image": "./images/28.jpg"
+  },  {
+    "id": 29,
+    "brand": "La Roche-Posay",
+    "name": "Anthelios Face Sunscreen",
+    "type": "Sunscreen",
+    "price": 28.00,
+    "image": "./images/29.jpg"
+  },
+  {
+    "id": 30,
+    "brand": "Hawaiian Tropic",
+    "name": "Sheer Touch Sunscreen Lotion",
+    "type": "Sunscreen",
+    "price": 14.97,
+    "image": "./images/30.jpg"
+  },
+  {
+    "id": 31,
+    "brand": "Banana Boat",
+    "name": "Ultra Sport Sunscreen Lotion",
+    "type": "Sunscreen",
+    "price": 26.90,
+    "image": "./images/31.jpg"
+  },
+  {
+    "id": 32,
+    "brand": "Neutrogena",
+    "name": "Ultra Sheer Moisturizing Serum",
+    "type": "Sunscreen",
+    "price": 14.39,
+    "image": "./images/32.jpg"
+  },
+  {
+    "id": 33,
+    "brand": "Neutrogena",
+    "name": "Ultra Sheer Body Mist Sunscreen",
+    "type": "Sunscreen",
+    "price": 14.39,
+    "image": "./images/33.jpg"
+  },
+  {
+    "id": 34,
+    "brand": "Aveeno",
+    "name": "Protect+ Mineral Sunscreen Stick",
+    "type": "Sunscreen",
+    "price": 17.47,
+    "image": "./images/34.jpg"
+  },
+  {
+    "id": 35,
+    "brand": "BLUE LIZARD",
+    "name": "Sensitive Mineral Sunscreen Lotion",
+    "type": "Sunscreen",
+    "price": 14.98,
+    "image": "./images/35.jpg"
+  },
+  {
+    "id": 36,
+    "brand": "Garnier Ombrelle",
+    "name": "Anti-Shine Facial Sunscreen Cream",
+    "type": "Sunscreen",
+    "price": 15.37,
+    "image": "./images/36.jpg"
   }
 ]

@@ -117,26 +117,24 @@ const BuildBundle = () => {
         </Tabs>
       </Box>
 
+      <Divider
+        orientation="vertical"
+        height="auto"
+        borderColor="gray.300"
+        mr="4"
+      />
+
       <Box width="17rem" mt="3" mr="1">
         <Text fontSize="xl" fontWeight="bold" mb={4} textAlign="center">
           Your Bundle
         </Text>
         <Stack spacing={2}>
           {Object.entries(selectedProducts).map(([type, product]) => (
-            <Box
-              key={type}
-              p={4}
-              borderRadius="lg"
-              bg="gray.100"
-              height="8rem"
-            >
+            <Box key={type} p={4} borderRadius="lg" bg="gray.100" height="8rem">
               <Flex justify="space-between" height="100%">
                 <Box>
                   <Text fontWeight="bold">{type}</Text>
-                  <Flex
-                    direction="column"
-                    textAlign="left"
-                  >
+                  <Flex direction="column" textAlign="left">
                     {product ? (
                       <>
                         <Text fontSize="sm" isTruncated maxWidth="10rem">
@@ -189,6 +187,7 @@ const BuildBundle = () => {
           <Button
             mt={2}
             bg="primary"
+            _hover={{ bg: "secondary" }}
             color="white"
             onClick={handleAddToBag}
             isDisabled={!allProductsSelected}

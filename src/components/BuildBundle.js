@@ -89,6 +89,7 @@ const BuildBundle = () => {
               <ProductGrid
                 products={fetchProductsByType("Cleanser")}
                 onProductSelect={handleProductSelect}
+                onProductDeselect={handleRemoveProduct}
                 selectedProduct={selectedProducts.Cleanser}
               />
             </TabPanel>
@@ -96,6 +97,7 @@ const BuildBundle = () => {
               <ProductGrid
                 products={fetchProductsByType("Moisturizer")}
                 onProductSelect={handleProductSelect}
+                onProductDeselect={handleRemoveProduct}
                 selectedProduct={selectedProducts.Moisturizer}
               />
             </TabPanel>
@@ -103,6 +105,7 @@ const BuildBundle = () => {
               <ProductGrid
                 products={fetchProductsByType("Serum")}
                 onProductSelect={handleProductSelect}
+                onProductDeselect={handleRemoveProduct}
                 selectedProduct={selectedProducts.Serum}
               />
             </TabPanel>
@@ -110,6 +113,7 @@ const BuildBundle = () => {
               <ProductGrid
                 products={fetchProductsByType("Sunscreen")}
                 onProductSelect={handleProductSelect}
+                onProductDeselect={handleRemoveProduct}
                 selectedProduct={selectedProducts.Sunscreen}
               />
             </TabPanel>
@@ -200,11 +204,11 @@ const BuildBundle = () => {
   );
 };
 
-const ProductGrid = ({ products, onProductSelect, selectedProduct }) => {
+const ProductGrid = ({ products, onProductSelect, onProductDeselect,selectedProduct }) => {
   const theme = useTheme();
   return (
-    <Box height="40rem" overflowY="scroll">
-      <SimpleGrid columns={{ base: 1, sm: 3 }} spacing={4}>
+    <Box height="80vh" overflowY="scroll">
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4}} spacing={4}>
         {products.map((product) => (
           <Card key={product.id} variant="outline" size="sm" maxW="sm">
             <Flex justify="center" align="center" mt={2}>
@@ -215,7 +219,10 @@ const ProductGrid = ({ products, onProductSelect, selectedProduct }) => {
                 }
                 borderRadius="lg"
                 alt={product.name}
-                boxSize="7rem"
+                width="100%"              
+                maxWidth="10rem"          
+                maxHeight="10rem"
+                objectFit="contain"
               />
             </Flex>
             <Box p={2}>
@@ -233,7 +240,7 @@ const ProductGrid = ({ products, onProductSelect, selectedProduct }) => {
                   <Button
                     bg={
                       selectedProduct && selectedProduct.id === product.id
-                        ? "primary"
+                        ? "red.500"
                         : theme.colors.gray[200]
                     }
                     color={
@@ -241,15 +248,23 @@ const ProductGrid = ({ products, onProductSelect, selectedProduct }) => {
                         ? "white"
                         : "black"
                     }
-                    _hover={{ bg: "secondary", color: "white" }}
-                    onClick={() => onProductSelect(product)}
-                    disabled={
-                      selectedProduct && selectedProduct.id === product.id
+                    _hover={
+                      { bg: selectedProduct && selectedProduct.id === product.id ? "red.700" : "secondary", 
+                        color: "white" 
+                         }
                     }
+                    onClick={() => 
+                      selectedProduct && selectedProduct.id === product.id
+                        ? onProductDeselect(selectedProduct.type)  
+                        : onProductSelect(product)
+                    }
+                    // disabled={
+                    //   selectedProduct && selectedProduct.id === product.id
+                    // }
                     width="5rem"
                   >
                     {selectedProduct && selectedProduct.id === product.id
-                      ? "Selected"
+                      ? "Remove"
                       : "Select"}
                   </Button>
                 </Box>

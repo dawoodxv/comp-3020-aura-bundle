@@ -15,6 +15,14 @@ import {
   Divider,
   useTheme,
   Image,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import { fetchProductsByType } from "../api/ApiClient";
 import { useNavigate } from "react-router-dom";
@@ -28,6 +36,7 @@ const BuildBundle = () => {
     Sunscreen: null,
   });
   const navigate = useNavigate();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleProductSelect = (product) => {
     setSelectedProducts((prev) => ({
@@ -52,11 +61,13 @@ const BuildBundle = () => {
   );
 
   const handleAddToBag = () => {
+    const uniqueId = Date.now();
     const productIds = Object.values(selectedProducts).map(
       (product) => product && product.id
     );
-    localStorage.setItem("bundleProductIds", JSON.stringify(productIds));
-    navigate("/bag");
+    localStorage.setItem(`b_${uniqueId}`, JSON.stringify(productIds));
+
+    onOpen();
   };
 
   return (
@@ -85,38 +96,18 @@ const BuildBundle = () => {
             ))}
           </TabList>
           <TabPanels>
-            <TabPanel>
-              <ProductGrid
-                products={fetchProductsByType("Cleanser")}
-                onProductSelect={handleProductSelect}
-                onProductDeselect={handleRemoveProduct}
-                selectedProduct={selectedProducts.Cleanser}
-              />
-            </TabPanel>
-            <TabPanel>
-              <ProductGrid
-                products={fetchProductsByType("Moisturizer")}
-                onProductSelect={handleProductSelect}
-                onProductDeselect={handleRemoveProduct}
-                selectedProduct={selectedProducts.Moisturizer}
-              />
-            </TabPanel>
-            <TabPanel>
-              <ProductGrid
-                products={fetchProductsByType("Serum")}
-                onProductSelect={handleProductSelect}
-                onProductDeselect={handleRemoveProduct}
-                selectedProduct={selectedProducts.Serum}
-              />
-            </TabPanel>
-            <TabPanel>
-              <ProductGrid
-                products={fetchProductsByType("Sunscreen")}
-                onProductSelect={handleProductSelect}
-                onProductDeselect={handleRemoveProduct}
-                selectedProduct={selectedProducts.Sunscreen}
-              />
-            </TabPanel>
+            {["Cleanser", "Moisturizer", "Serum", "Sunscreen"].map(
+              (type, index) => (
+                <TabPanel key={type}>
+                  <ProductGrid
+                    products={fetchProductsByType(type)}
+                    onProductSelect={handleProductSelect}
+                    onProductDeselect={handleRemoveProduct}
+                    selectedProduct={selectedProducts[type]}
+                  />
+                </TabPanel>
+              )
+            )}
           </TabPanels>
         </Tabs>
       </Box>
@@ -164,6 +155,9 @@ const BuildBundle = () => {
                 >
                   {product && (
                     <>
+                      <Text fontWeight="medium">
+                        ${product.price.toFixed(2)}
+                      </Text>
                       <Button
                         size="xs"
                         colorScheme="red"
@@ -172,9 +166,6 @@ const BuildBundle = () => {
                       >
                         Remove
                       </Button>
-                      <Text fontWeight="medium">
-                        ${product.price.toFixed(2)}
-                      </Text>
                     </>
                   )}
                 </Flex>
@@ -185,30 +176,77 @@ const BuildBundle = () => {
         </Stack>
 
         <Box mt={4}>
-          <Text fontSize="lg" fontWeight="bold">
-            Total: ${totalPrice.toFixed(2)}
-          </Text>
-          <Button
-            mt={2}
-            bg="primary"
-            _hover={{ bg: "secondary" }}
-            color="white"
-            onClick={handleAddToBag}
-            isDisabled={!allProductsSelected}
-          >
-            Add to Bag
-          </Button>
+          <Divider
+            orientation="horizontal"
+            height="auto"
+            borderColor="gray.300"
+          />
+          <Flex justify="space-between" align="center">
+            <Text fontSize="lg" fontWeight="bold">
+              Total:
+            </Text>
+            <Text fontSize="lg" fontWeight="bold" textAlign="right">
+              ${totalPrice.toFixed(2)}
+            </Text>
+          </Flex>
+          <Box mt={2} textAlign="right">
+            <Button
+              bg="primary"
+              _hover={{ bg: "secondary" }}
+              color="white"
+              onClick={handleAddToBag}
+              isDisabled={!allProductsSelected}
+            >
+              Add to Bag
+            </Button>
+          </Box>
         </Box>
       </Box>
+
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Bundle Added to Bag</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>Your bundle has been added to your bag.</Text>
+            <Text>Would you like to continue shopping or go to your bag?</Text>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={() => navigate("/bag")}>
+              Go to Bag
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                setSelectedProducts({
+                  Cleanser: null,
+                  Moisturizer: null,
+                  Serum: null,
+                  Sunscreen: null,
+                });
+                onClose();
+              }}
+            >
+              Continue Shopping
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Flex>
   );
 };
 
-const ProductGrid = ({ products, onProductSelect, onProductDeselect,selectedProduct }) => {
+const ProductGrid = ({
+  products,
+  onProductSelect,
+  onProductDeselect,
+  selectedProduct,
+}) => {
   const theme = useTheme();
   return (
     <Box height="80vh" overflowY="scroll">
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4}} spacing={4}>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={4}>
         {products.map((product) => (
           <Card key={product.id} variant="outline" size="sm" maxW="sm">
             <Flex justify="center" align="center" mt={2}>
@@ -219,8 +257,8 @@ const ProductGrid = ({ products, onProductSelect, onProductDeselect,selectedProd
                 }
                 borderRadius="lg"
                 alt={product.name}
-                width="100%"              
-                maxWidth="10rem"          
+                width="100%"
+                maxWidth="10rem"
                 maxHeight="10rem"
                 objectFit="contain"
               />
@@ -248,19 +286,18 @@ const ProductGrid = ({ products, onProductSelect, onProductDeselect,selectedProd
                         ? "white"
                         : "black"
                     }
-                    _hover={
-                      { bg: selectedProduct && selectedProduct.id === product.id ? "red.700" : "secondary", 
-                        color: "white" 
-                         }
-                    }
-                    onClick={() => 
+                    _hover={{
+                      bg:
+                        selectedProduct && selectedProduct.id === product.id
+                          ? "red.700"
+                          : "secondary",
+                      color: "white",
+                    }}
+                    onClick={() =>
                       selectedProduct && selectedProduct.id === product.id
-                        ? onProductDeselect(selectedProduct.type)  
+                        ? onProductDeselect(selectedProduct.type)
                         : onProductSelect(product)
                     }
-                    // disabled={
-                    //   selectedProduct && selectedProduct.id === product.id
-                    // }
                     width="5rem"
                   >
                     {selectedProduct && selectedProduct.id === product.id

@@ -9,7 +9,6 @@ import {
   Tooltip,
   useBreakpointValue,
   useTheme,
-  Text,
   Circle,
 } from "@chakra-ui/react";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";

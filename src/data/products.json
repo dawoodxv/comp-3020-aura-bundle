@@ -285,5 +285,100 @@
     "type": "Sunscreen",
     "price": 15.37,
     "image": "./images/36.jpg"
+  },
+  {
+    "id": 37,
+    "brand": "CeraVe",
+    "name": "ACNE Treatment Foaming Cleanser",
+    "type": "Cleanser",
+    "price": 20.89,
+    "image": "./images/37.jpg"
+  },
+  {
+    "id": 38,
+    "brand": "THAYERS",
+    "name": "pH Balancing Daily Cleanser",
+    "type": "Cleanser",
+    "price": 12.48,
+    "image": "./images/38.jpg"
+  },
+  {
+    "id": 39,
+    "brand": "innisfree",
+    "name": "Green Tea Amino Acid Cleansing Foam",
+    "type": "Cleanser",
+    "price": 16.50,
+    "image": "./images/39.jpg"
+  },
+  {
+    "id": 40,
+    "brand": "NIVEA",
+    "name": "Nourishing Body Milk",
+    "type": "Moisturizer",
+    "price": 9.37,
+    "image": "./images/40.jpg"
+  },
+  {
+    "id": 41,
+    "brand": "NIVEA",
+    "name": "Repair and Care Body Lotion",
+    "type": "Moisturizer",
+    "price": 9.37,
+    "image": "./images/41.jpg"
+  },
+  {
+    "id": 42,
+    "brand": "Cetaphil",
+    "name": "Advanced Moisture Therapy",
+    "type": "Moisturizer",
+    "price": 10.47,
+    "image": "./images/42.jpg"
+  },
+  {
+    "id": 43,
+    "brand": "eva Naturals",
+    "name": "Vitamin C Serum Plus",
+    "type": "Serum",
+    "price": 19.99,
+    "image": "./images/43.jpg"
+  },
+  {
+    "id": 44,
+    "brand": "e.l.f. SKIN",
+    "name": "Triple Bounce Serum",
+    "type": "Serum",
+    "price": 26.84,
+    "image": "./images/44.jpg"
+  },
+  {
+    "id": 45,
+    "brand": "COSRX",
+    "name": "Advanced Snail 96 Mucin Power Essence",
+    "type": "Serum",
+    "price": 21.88,
+    "image": "./images/45.jpg"
+  },
+  {
+    "id": 46,
+    "brand": "Hawaiian",
+    "name": "Sunscreen Lotion Spf 50",
+    "type": "Sunscreen",
+    "price": 13.97,
+    "image": "./images/46.jpg"
+  },  {
+    "id": 47,
+    "brand": "Aveeno",
+    "name": "Moisturizing Sunscreen SPF 50",
+    "type": "Sunscreen",
+    "price": 12.10,
+    "image": "./images/47.jpg"
+  },
+  {
+    "id": 48,
+    "brand": "Neutrogena",
+    "name": "Clear Face Sunscreen Lotion",
+    "type": "Sunscreen",
+    "price": 14.97,
+    "image": "./images/48.jpg"
   }
 ]

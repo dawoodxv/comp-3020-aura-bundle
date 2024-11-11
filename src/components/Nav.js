@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -8,6 +8,8 @@ import {
   HStack,
   useBreakpointValue,
   useTheme,
+  Text,
+  Circle,
 } from "@chakra-ui/react";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
 import { Link as RouterLink, useLocation } from "react-router-dom";
@@ -16,10 +18,24 @@ const Navbar = () => {
   const isLargeScreen = useBreakpointValue({ base: false, md: true });
   const location = useLocation();
   const theme = useTheme(); // Get the current theme
+  const [bundleCount, setBundleCount] = useState(0);
 
   const isHome = location.pathname === "/";
   const isBuildBundle = location.pathname === "/buildBundle";
   const isBag = location.pathname === "/bag";
+
+  useEffect(() => {
+    const countBundlesInBag = () => {
+      let count = 0;
+      for (const key in localStorage) {
+        if (key.startsWith("b_")) count += 1;
+      }
+      setBundleCount(count);
+    };
+    countBundlesInBag();
+    window.addEventListener("storage", countBundlesInBag);
+    return () => window.removeEventListener("storage", countBundlesInBag);
+  }, []);
 
   return (
     <Box bg="white" color="primary" py={3} px={6} boxShadow="sm">
@@ -90,17 +106,35 @@ const Navbar = () => {
             size="lg"
             _hover={{ bg: "secondary", color: "white" }}
           />
-          <IconButton
-            as={RouterLink}
-            to="/bag"
-            aria-label="View Bag"
-            icon={<FaShoppingBag />}
-            isRound
-            size="lg"
-            bg={isBag ? "primary" : theme.colors.gray[200]}
-            color={isBag ? "white" : "black"}
-            _hover={{ bg: "secondary", color: "white" }}
-          />
+
+          <Box position="relative">
+            <IconButton
+              as={RouterLink}
+              to="/bag"
+              aria-label="View Bag"
+              icon={<FaShoppingBag />}
+              isRound
+              size="lg"
+              bg={isBag ? "primary" : theme.colors.gray[200]}
+              color={isBag ? "white" : "black"}
+              _hover={{ bg: "secondary", color: "white" }}
+            />
+            {bundleCount > 0 && (
+              <Circle
+                size="20px"
+                bg="red.500"
+                color="white"
+                position="absolute"
+                top="-3px"
+                right="-3px"
+                fontSize="xs"
+                fontWeight="bold"
+              >
+                {bundleCount}
+              </Circle>
+            )}
+          </Box>
+
           <Button
             aria-label="Sign In"
             disabled

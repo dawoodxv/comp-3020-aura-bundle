@@ -23,6 +23,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Progress,
 } from "@chakra-ui/react";
 import { fetchProductsByType } from "../api/ApiClient";
 import { useNavigate } from "react-router-dom";
@@ -70,6 +71,9 @@ const BuildBundle = () => {
     onOpen();
   };
 
+  const selectedCount = Object.values(selectedProducts).filter(Boolean).length;
+  const progressPercentage = (selectedCount / 4) * 100;
+
   return (
     <Flex justify="center">
       <Box flex="1" pr={2} textAlign="center">
@@ -95,6 +99,7 @@ const BuildBundle = () => {
               </Tab>
             ))}
           </TabList>
+
           <TabPanels>
             {["Cleanser", "Moisturizer", "Serum", "Sunscreen"].map(
               (type, index) => (
@@ -110,14 +115,21 @@ const BuildBundle = () => {
             )}
           </TabPanels>
         </Tabs>
+
+        <Box mt={1}>
+          <Text fontSize="sm" mb={2}>
+            Bundle Progress: {selectedCount} of 4 selected
+          </Text>
+          <Progress
+            value={progressPercentage}
+            size="sm"
+            colorScheme="green"
+            borderRadius="md"
+          />
+        </Box>
       </Box>
 
-      <Divider
-        orientation="vertical"
-        height="auto"
-        borderColor="gray.300"
-        mr="4"
-      />
+      <Divider orientation="vertical" height="auto" borderColor="gray.300" mr="4" />
 
       <Box width="17rem" mt="3" mr="1">
         <Text fontSize="xl" fontWeight="bold" mb={4} textAlign="center">
@@ -147,12 +159,7 @@ const BuildBundle = () => {
                   </Flex>
                 </Box>
 
-                <Flex
-                  direction="column"
-                  justify="flex-end"
-                  align="flex-end"
-                  textAlign="right"
-                >
+                <Flex direction="column" justify="flex-end" align="flex-end" textAlign="right">
                   {product && (
                     <>
                       <Text fontWeight="medium">
@@ -252,8 +259,7 @@ const ProductGrid = ({
             <Flex justify="center" align="center" mt={2}>
               <Image
                 src={
-                  require(`../data/images/${product.image.split("/").pop()}`) ||
-                  null
+                  require(`../data/images/${product.image.split("/").pop()}`) || null
                 }
                 borderRadius="lg"
                 alt={product.name}

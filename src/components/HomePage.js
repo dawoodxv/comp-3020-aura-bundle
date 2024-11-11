@@ -7,6 +7,7 @@ import {
   Text,
   VStack,
   HStack,
+  Tooltip,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -55,19 +56,21 @@ const HomePage = () => {
           height="100%"
         >
           <HStack spacing={4} width="100%" justify="center" mb={4}>
-            <Button
-              disabled
-              bg="primary"
-              color="white"
-              _hover={{ bg: "secondary" }}
-              size="lg"
-              flexGrow={1}
-              minWidth="120px"
-              maxWidth="200px"
-              isTruncated 
-            >
-              Explore Bundles
-            </Button>
+            <Tooltip label="This feature is out of the scope of this vertical prototype. However, this feature would allow the user to explore preset bundles.">
+              <Button
+                disabled
+                bg="primary"
+                color="white"
+                _hover={{ bg: "secondary" }}
+                size="lg"
+                flexGrow={1}
+                minWidth="120px"
+                maxWidth="200px"
+                isTruncated 
+              >
+                Explore Bundles
+              </Button>
+            </Tooltip>
             <Button
               as={RouterLink}
               to="/buildBundle"
@@ -82,19 +85,21 @@ const HomePage = () => {
             >
               Build Your Own Bundle
             </Button>
-            <Button
-              disabled
-              bg="primary"
-              color="white"
-              _hover={{ bg: "secondary" }}
-              size="lg"
-              flexGrow={1}
-              minWidth="120px"
-              maxWidth="200px"
-              isTruncated
-            >
-              Take Quiz
-            </Button>
+            <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is that the user could take a quiz about their skincare needs to get a bundle that is right for them.">   
+              <Button
+                disabled
+                bg="primary"
+                color="white"
+                _hover={{ bg: "secondary" }}
+                size="lg"
+                flexGrow={1}
+                minWidth="120px"
+                maxWidth="200px"
+                isTruncated
+              >
+                Personalized Bundles
+              </Button>
+            </Tooltip>
           </HStack>
         </Flex>
       </Box>

@@ -6,6 +6,7 @@ import {
   Button,
   Image,
   HStack,
+  Tooltip,
   useBreakpointValue,
   useTheme,
 } from "@chakra-ui/react";
@@ -60,36 +61,42 @@ const Navbar = () => {
             >
               Build a Bundle
             </Button>
-            <Button
-              aria-label="Personalized Bundle"
-              disabled
-              borderRadius="full"
-              size="sm"
-              _hover={{ bg: "secondary", color: "white" }}
-            >
-              Personalized Bundles
-            </Button>
-            <Button
-              aria-label="Prebuilt Bundles"
-              disabled
-              borderRadius="full"
-              size="sm"
-              _hover={{ bg: "secondary", color: "white" }}
-            >
-              Our Bundles
-            </Button>
+            <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is that the user could take a quiz about their skincare needs to get a bundle that is right for them.">
+              <Button
+                aria-label="Personalized Bundle"
+                disabled
+                borderRadius="full"
+                size="sm"
+                _hover={{ bg: "secondary", color: "white" }}
+              >
+                Personalized Bundles
+              </Button>
+            </Tooltip>
+            <Tooltip label="This feature is out of the scope of this vertical prototype. However, this feature would allow the user to explore preset bundles.">
+              <Button
+                aria-label="Prebuilt Bundles"
+                disabled
+                borderRadius="full"
+                size="sm"
+                _hover={{ bg: "secondary", color: "white" }}
+              >
+                Explore Bundles
+              </Button>
+            </Tooltip>
           </HStack>
         )}
 
         <HStack spacing={4}>
-          <IconButton
-            aria-label="Favorites"
-            icon={<FaHeart />}
-            disabled
-            isRound
-            size="lg"
-            _hover={{ bg: "secondary", color: "white" }}
-          />
+          <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is to allow the user to store their favorite bundles and items to quickly purchase without going through more steps.">
+            <IconButton
+              aria-label="Favorites"
+              icon={<FaHeart />}
+              disabled
+              isRound
+              size="lg"
+              _hover={{ bg: "secondary", color: "white" }}
+            />
+          </Tooltip>
           <IconButton
             as={RouterLink}
             to="/bag"
@@ -101,15 +108,17 @@ const Navbar = () => {
             color={isBag ? "white" : "black"}
             _hover={{ bg: "secondary", color: "white" }}
           />
-          <Button
-            aria-label="Sign In"
-            disabled
-            borderRadius="full"
-            size="md"
-            _hover={{ bg: "secondary", color: "white" }}
-          >
-            Sign In
-          </Button>
+          <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is to take the user to a sign in/sign up page. A user profile could store a user’s past purchases, favorite items, and skin care needs.">
+            <Button
+              aria-label="Sign In"
+              disabled
+              borderRadius="full"
+              size="md"
+              _hover={{ bg: "secondary", color: "white" }}
+            >
+              Sign In
+            </Button>
+          </Tooltip>
         </HStack>
       </Flex>
     </Box>

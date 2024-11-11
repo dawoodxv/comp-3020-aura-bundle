@@ -87,7 +87,7 @@ const Navbar = () => {
         )}
 
         <HStack spacing={4}>
-          <Tooltip label="-	This feature is out of the scope of this vertical prototype. However, the idea is to allow the user to store their favorite bundles and items to quickly purchase without going through more steps.">
+          <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is to allow the user to store their favorite bundles and items to quickly purchase without going through more steps.">
             <IconButton
               aria-label="Favorites"
               icon={<FaHeart />}

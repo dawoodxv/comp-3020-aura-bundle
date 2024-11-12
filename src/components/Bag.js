@@ -115,6 +115,7 @@ const Bag = () => {
 
   useEffect(() => {
     updateFormValidity();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contactInfo, paymentInfo]);
 
   const handleFormChange = (event, setForm) => {
@@ -136,69 +137,65 @@ const Bag = () => {
 
   const totalAmount = bundles.reduce((acc, bundle) => acc + bundle.total, 0);
 
-  const handleExpiryChange = (e) => {
-    let value = e.target.value.replace(/[^0-9]/g, "");
-    if (value.length > 2 && value.length <= 4) {
-      value = `${value.slice(0, 2)}/${value.slice(2, 4)}`;
-    }
-    setPaymentInfo((prev) => ({ ...prev, expiry: value }));
-    setTouchedFields((prev) => ({ ...prev, expiry: true }));
-    updateFormValidity();
-  };
-
   return (
     <Flex p={5} align="flex-start" justify="space-between">
       <Box flex="1" mr={4}>
         <Text fontSize="2xl" mb={4}>
           Your Bag
         </Text>
-        <Accordion defaultIndex={[0]} allowMultiple>
-          {bundles.map((bundle, index) => (
-            <AccordionItem
-              key={bundle.id}
-              mb={2}
-              border="1px solid #e2e8f0"
-              borderRadius="md"
-            >
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  <Text fontWeight="bold">Bundle #{index + 1}</Text>
-                  <Text fontSize="sm">Total: ${bundle.total.toFixed(2)}</Text>
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-              <AccordionPanel>
-                {bundle.products.map((product) => (
-                  <Flex key={product.id} align="center" mb={3}>
-                    <Image
-                      src={
-                        require(`../data/images/${product.image
-                          .split("/")
-                          .pop()}`) || null
-                      }
-                      boxSize="50px"
-                      mr={3}
-                    />
-                    <Box flex="1">
-                      <Text fontWeight="bold">{product.name}</Text>
-                      <Text fontSize="sm">{product.brand}</Text>
-                      <Text fontSize="sm">${product.price.toFixed(2)}</Text>
-                    </Box>
-                  </Flex>
-                ))}
-                <Button
-                  leftIcon={<FaTrashAlt />}
-                  colorScheme="red"
-                  size="sm"
-                  mt={2}
-                  onClick={() => handleRemoveBundle(bundle.id)}
-                >
-                  Remove Bundle
-                </Button>
-              </AccordionPanel>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        {bundles.length === 0 ? (
+          <Text fontSize="xl" color="gray.500" mb={4}>
+            Your cart is empty. Please add items to your cart.
+          </Text>
+        ) : (
+          <Accordion defaultIndex={[0]} allowMultiple>
+            {bundles.map((bundle, index) => (
+              <AccordionItem
+                key={bundle.id}
+                mb={2}
+                border="1px solid #e2e8f0"
+                borderRadius="md"
+              >
+                <AccordionButton>
+                  <Box flex="1" textAlign="left">
+                    <Text fontWeight="bold">Bundle #{index + 1}</Text>
+                    <Text fontSize="sm">Total: ${bundle.total.toFixed(2)}</Text>
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+                <AccordionPanel>
+                  {bundle.products.map((product) => (
+                    <Flex key={product.id} align="center" mb={3}>
+                      <Image
+                        src={
+                          require(`../data/images/${product.image
+                            .split("/")
+                            .pop()}`) || null
+                        }
+                        boxSize="50px"
+                        mr={3}
+                      />
+                      <Box flex="1">
+                        <Text fontWeight="bold">{product.name}</Text>
+                        <Text fontSize="sm">{product.brand}</Text>
+                        <Text fontSize="sm">${product.price.toFixed(2)}</Text>
+                      </Box>
+                    </Flex>
+                  ))}
+                  <Button
+                    leftIcon={<FaTrashAlt />}
+                    colorScheme="red"
+                    size="sm"
+                    mt={2}
+                    onClick={() => handleRemoveBundle(bundle.id)}
+                  >
+                    Remove Bundle
+                  </Button>
+                </AccordionPanel>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        )}
       </Box>
 
       <Box flex="0.4" p={5} border="1px solid #e2e8f0" borderRadius="md">
@@ -208,6 +205,7 @@ const Bag = () => {
             variant="link"
             mb={4}
             onClick={() => setStep(step - 1)}
+            isDisabled={bundles.length === 0}
           >
             Back
           </Button>
@@ -225,8 +223,8 @@ const Bag = () => {
               onChange={(e) => handleFormChange(e, setContactInfo)}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.email && errors.email}
+              isDisabled={bundles.length === 0}
             />
-
             <Input
               placeholder="First Name"
               name="firstName"
@@ -234,8 +232,8 @@ const Bag = () => {
               onChange={(e) => handleFormChange(e, setContactInfo)}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.firstName && errors.firstName}
+              isDisabled={bundles.length === 0}
             />
-
             <Input
               placeholder="Last Name"
               name="lastName"
@@ -243,17 +241,17 @@ const Bag = () => {
               onChange={(e) => handleFormChange(e, setContactInfo)}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.lastName && errors.lastName}
+              isDisabled={bundles.length === 0}
             />
-
             <Input
-              placeholder="Street Address"
+              placeholder="Address"
               name="address"
               value={contactInfo.address || ""}
               onChange={(e) => handleFormChange(e, setContactInfo)}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.address && errors.address}
+              isDisabled={bundles.length === 0}
             />
-
             <Input
               placeholder="City"
               name="city"
@@ -261,16 +259,17 @@ const Bag = () => {
               onChange={(e) => handleFormChange(e, setContactInfo)}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.city && errors.city}
+              isDisabled={bundles.length === 0}
             />
-
             <Select
               name="province"
-              placeholder="Select Province"
               value={contactInfo.province || ""}
               onChange={(e) => handleFormChange(e, setContactInfo)}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.province && errors.province}
+              isDisabled={bundles.length === 0}
             >
+              <option value="">Select Province</option>
               <option value="ON">Ontario</option>
               <option value="QC">Quebec</option>
               <option value="BC">British Columbia</option>
@@ -285,7 +284,6 @@ const Bag = () => {
               <option value="NU">Nunavut</option>
               <option value="YT">Yukon</option>
             </Select>
-
             <Input
               placeholder="Postal Code"
               name="postalCode"
@@ -293,8 +291,8 @@ const Bag = () => {
               onChange={handlePostalCodeChange}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.postalCode && errors.postalCode}
+              isDisabled={bundles.length === 0}
             />
-
             <Input
               placeholder="Phone Number"
               name="phone"
@@ -308,6 +306,7 @@ const Bag = () => {
               }}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.phone && errors.phone}
+              isDisabled={bundles.length === 0}
             />
 
             <Button
@@ -315,7 +314,7 @@ const Bag = () => {
               _hover={{ bg: "secondary" }}
               color="white"
               onClick={() => setStep(2)}
-              isDisabled={!isFormValid}
+              isDisabled={!isFormValid || bundles.length === 0}
             >
               Next
             </Button>
@@ -334,8 +333,8 @@ const Bag = () => {
               onChange={(e) => handleFormChange(e, setPaymentInfo)}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.cardName && errors.cardName}
+              isDisabled={bundles.length === 0}
             />
-
             <Input
               placeholder="Card Number"
               name="cardNumber"
@@ -349,8 +348,8 @@ const Bag = () => {
               }}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.cardNumber && errors.cardNumber}
+              isDisabled={bundles.length === 0}
             />
-
             <Input
               placeholder="Expiry Date (MM/YY)"
               name="expiry"
@@ -367,18 +366,22 @@ const Bag = () => {
               }}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.expiry && errors.expiry}
+              isDisabled={bundles.length === 0}
             />
-
             <Input
               placeholder="CVV"
               name="cvv"
               value={paymentInfo.cvv || ""}
               onChange={(e) => {
                 const value = e.target.value.replace(/\D/g, "").slice(0, 3);
-                handleFormChange({ target: { name: "cvv", value } }, setPaymentInfo);
+                handleFormChange(
+                  { target: { name: "cvv", value } },
+                  setPaymentInfo
+                );
               }}
               onBlur={() => updateFormValidity()}
               isInvalid={touchedFields.cvv && errors.cvv}
+              isDisabled={bundles.length === 0}
             />
 
             <Button
@@ -386,7 +389,7 @@ const Bag = () => {
               _hover={{ bg: "secondary" }}
               color="white"
               onClick={() => setStep(3)}
-              isDisabled={!isFormValid}
+              isDisabled={!isFormValid || bundles.length === 0}
             >
               Next
             </Button>
@@ -394,29 +397,31 @@ const Bag = () => {
         )}
 
         {step === 3 && (
-          <Flex direction="column" align="center">
+          <Flex direction="column" align="flex-start">
             <Text fontSize="2xl" mb={4}>
               Order Summary
             </Text>
             {bundles.map((bundle, index) => (
-              <Box key={bundle.id} mb={3}>
-                <Text fontSize="lg" fontWeight="bold">
-                  Bundle #{index + 1}
-                </Text>
-                {bundle.products.map((product) => (
-                  <Text key={product.id} fontSize="sm">
-                    {product.name} - ${product.price.toFixed(2)}
+              <Box key={bundle.id} mb={3} w="100%">
+                <Flex justify="space-between" align="center" mb={2}>
+                  <Text fontSize="lg" fontWeight="bold">
+                    Bundle #{index + 1}
                   </Text>
-                ))}
-                <Text fontWeight="bold" mt={2}>
-                  Total for this bundle: ${bundle.total.toFixed(2)}
-                </Text>
+                  <Text fontSize="lg" fontWeight="bold">
+                    ${bundle.total.toFixed(2)}
+                  </Text>
+                </Flex>
                 <Divider my={3} />
               </Box>
             ))}
-            <Text fontSize="xl" fontWeight="bold">
-              Grand Total: ${totalAmount.toFixed(2)}
-            </Text>
+            <Flex justify="space-between" w="100%" mb={4}>
+              <Text fontSize="xl" fontWeight="bold">
+                Grand Total:
+              </Text>
+              <Text fontSize="xl" fontWeight="bold">
+                ${totalAmount.toFixed(2)}
+              </Text>
+            </Flex>
             <Button
               bg="primary"
               _hover={{ bg: "secondary" }}
@@ -450,6 +455,12 @@ const Bag = () => {
             </Button>
           </Box>
         )}
+        <Progress
+          value={(step / 4) * 100}
+          size="sm"
+          colorScheme="blue"
+          mt={4}
+        />
       </Box>
     </Flex>
   );

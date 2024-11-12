@@ -116,14 +116,14 @@ const BuildBundle = () => {
           </TabPanels>
         </Tabs>
 
-        <Box mt={1}>
+        <Box mt={1} mb={2}>
           <Text fontSize="sm" mb={2}>
             Bundle Progress: {selectedCount} of 4 selected
           </Text>
           <Progress
             value={progressPercentage}
             size="sm"
-            colorScheme="green"
+            colorScheme="blue"
             borderRadius="md"
           />
         </Box>

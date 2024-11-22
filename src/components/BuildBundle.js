@@ -123,7 +123,7 @@ const BuildBundle = () => {
           <Progress
             value={progressPercentage}
             size="sm"
-            colorScheme="blue"
+            colorScheme="green"
             borderRadius="md"
           />
         </Box>
@@ -220,11 +220,11 @@ const BuildBundle = () => {
             <Text>Would you like to continue shopping or go to your bag?</Text>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={() => navigate("/bag")}>
+            <Button bg="secondary" color="white" mr={3} onClick={() => navigate("/bag")}>
               Go to Bag
             </Button>
             <Button
-              variant="ghost"
+              bg="theme.colors.gray[200]"
               onClick={() => {
                 setSelectedProducts({
                   Cleanser: null,

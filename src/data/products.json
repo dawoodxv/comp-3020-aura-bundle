@@ -5,7 +5,8 @@
     "name": "Gentle Skin Cleanser",
     "type": "Cleanser",
     "price": 14.47,
-    "image": "./images/1.jpg"
+    "image": "./images/1.jpg",
+    "details": "A mild, non-irritating cleanser perfect for sensitive skin. Recommended by dermatologists worldwide."
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "name": "Foaming Face Wash",
     "type": "Cleanser",
     "price": 21.28,
-    "image": "./images/2.jpg"
+    "image": "./images/2.jpg",
+    "details": "A gentle cleanser with ceramides and hyaluronic acid to maintain the skin's natural barrier."
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "name": "Hydrating Cleanser",
     "type": "Cleanser",
     "price": 14.93,
-    "image": "./images/3.jpg"
+    "image": "./images/3.jpg",
+    "details": "A hydrating cleanser ideal for normal to dry skin, leaving it soft and refreshed."
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "name": "Salicylic Acid Cleanser",
     "type": "Cleanser",
     "price": 24.99,
-    "image": "./images/4.jpg"
+    "image": "./images/4.jpg",
+    "details": "This cleanser gently exfoliates and removes impurities, ideal for acne-prone skin."
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "name": "Oil Cleanser",
     "type": "Cleanser",
     "price": 19.99,
-    "image": "./images/5.jpg"
+    "image": "./images/5.jpg",
+    "details": "An oil-based cleanser that effectively removes makeup and dirt without stripping moisture."
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "name": "Face Wash Gel Cleanser",
     "type": "Cleanser",
     "price": 24.65,
-    "image": "./images/6.jpg"
+    "image": "./images/6.jpg",
+    "details": "A foaming gel cleanser that deeply cleanses while respecting the skin's pH."
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "name": "Hydrating Cleansing Gel",
     "type": "Cleanser",
     "price": 15.97,
-    "image": "./images/7.jpg"
+    "image": "./images/7.jpg",
+    "details": "A lightweight gel cleanser infused with hyaluronic acid for intense hydration."
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "name": "Cosmetics Holy Hydration",
     "type": "Cleanser",
     "price": 16.98,
-    "image": "./images/8.jpg"
+    "image": "./images/8.jpg",
+    "details": "Nourish and cleanse your skin with this hydrating and revitalizing formula."
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "name": "Rice Water Bright Cleansing Foam",
     "type": "Cleanser",
     "price": 16.99,
-    "image": "./images/9.jpg"
+    "image": "./images/9.jpg",
+    "details": "Rich in rice water extracts, this cleanser brightens and softens your skin."
   },
   {
     "id": 10,
@@ -77,7 +86,8 @@
     "name": "Moisturizing Lotion",
     "type": "Moisturizer",
     "price": 22.77,
-    "image": "./images/10.jpg"
+    "image": "./images/10.jpg",
+    "details": "Locks in hydration with essential ceramides and provides 24-hour moisture."
   },
   {
     "id": 11,
@@ -85,7 +95,8 @@
     "name": "Daily Moisturizing Lotion",
     "type": "Moisturizer",
     "price": 21.28,
-    "image": "./images/11.jpg"
+    "image": "./images/11.jpg",
+    "details": "Enriched with oat extract to soothe and deeply hydrate your skin."
   },
   {
     "id": 12,
@@ -93,7 +104,8 @@
     "name": "Hydrating Body Lotion",
     "type": "Moisturizer",
     "price": 14.47,
-    "image": "./images/12.jpg"
+    "image": "./images/12.jpg",
+    "details": "Lightweight and fast-absorbing, ideal for sensitive and dry skin types."
   },
   {
     "id": 13,
@@ -101,7 +113,8 @@
     "name": "Hydro Boost Face Moisturizer",
     "type": "Moisturizer",
     "price": 26.90,
-    "image": "./images/13.jpg"
+    "image": "./images/13.jpg",
+    "details": "A water gel-based moisturizer that provides long-lasting hydration."
   },
   {
     "id": 14,
@@ -109,7 +122,8 @@
     "name": "Holy Hydration",
     "type": "Moisturizer",
     "price": 12.98,
-    "image": "./images/14.jpg"
+    "image": "./images/14.jpg",
+    "details": "Delivers intense hydration and nourishment, leaving skin soft and smooth."
   },
   {
     "id": 15,
@@ -117,7 +131,8 @@
     "name": "Moisturizing Cream",
     "type": "Moisturizer",
     "price": 29.71,
-    "image": "./images/15.jpg"
+    "image": "./images/15.jpg",
+    "details": "A rich cream that restores the skin’s barrier and provides all-day hydration."
   },
   {
     "id": 16,
@@ -125,7 +140,8 @@
     "name": "Toleriane Sensitive Face Cream",
     "type": "Moisturizer",
     "price": 23.37,
-    "image": "./images/16.jpg"
+    "image": "./images/16.jpg",
+    "details": "Perfect for sensitive skin, this cream soothes and repairs dryness."
   },
   {
     "id": 17,
@@ -133,7 +149,8 @@
     "name": "Calming Moisture Barrier Cream",
     "type": "Moisturizer",
     "price": 16.98,
-    "image": "./images/17.jpg"
+    "image": "./images/17.jpg",
+    "details": "Calms irritated skin and strengthens its natural barrier."
   },
   {
     "id": 18,
@@ -141,7 +158,8 @@
     "name": "Cocoa Butter Body Lotion",
     "type": "Moisturizer",
     "price": 8.37,
-    "image": "./images/18.jpg"
+    "image": "./images/18.jpg",
+    "details": "Infused with cocoa butter for deep hydration and a glowing finish."
   },
   {
     "id": 19,
@@ -149,7 +167,8 @@
     "name": "Resurfacing RETINOL Serum",
     "type": "Serum",
     "price": 21.88,
-    "image": "./images/19.jpg"
+    "image": "./images/19.jpg",
+    "details": "Targets acne scars and uneven skin tone with retinol and ceramides."
   },
   {
     "id": 20,
@@ -157,7 +176,8 @@
     "name": "Vitamin C Serum",
     "type": "Serum",
     "price": 14.97,
-    "image": "./images/20.jpg"
+    "image": "./images/20.jpg",
+    "details": "Brightens your skin and reduces dark spots with the power of vitamin C."
   },
   {
     "id": 21,
@@ -165,7 +185,8 @@
     "name": "B5 Anti-Aging Serum",
     "type": "Serum",
     "price": 47.50,
-    "image": "./images/21.jpg"
+    "image": "./images/21.jpg",
+    "details": "Infused with vitamin B5 and hyaluronic acid to reduce fine lines and wrinkles while restoring skin elasticity."
   },
   {
     "id": 22,
@@ -173,7 +194,8 @@
     "name": "Aloe Vera Serum",
     "type": "Serum",
     "price": 14.97,
-    "image": "./images/22.jpg"
+    "image": "./images/22.jpg",
+    "details": "Hydrates and soothes your skin with natural aloe vera for a refreshed and dewy look."
   },
   {
     "id": 23,
@@ -181,7 +203,8 @@
     "name": "Hyaluronic Acid Face Serum",
     "type": "Serum",
     "price": 18.48,
-    "image": "./images/23.jpg"
+    "image": "./images/23.jpg",
+    "details": "Provides deep hydration to plump and revitalize your skin with pure hyaluronic acid."
   },
   {
     "id": 24,
@@ -189,7 +212,8 @@
     "name": "Radiance Brightening Serum",
     "type": "Serum",
     "price": 25.48,
-    "image": "./images/24.jpg"
+    "image": "./images/24.jpg",
+    "details": "Brightens dull skin and evens out complexion for a radiant glow, perfect for sensitive skin."
   },
   {
     "id": 25,
@@ -197,7 +221,8 @@
     "name": "Hyaluronic Acid Serum",
     "type": "Serum",
     "price": 14.00,
-    "image": "./images/25.jpg"
+    "image": "./images/25.jpg",
+    "details": "Boosts moisture retention for all-day hydration and a smooth complexion."
   },
   {
     "id": 26,
@@ -205,7 +230,8 @@
     "name": "Pure Vitamin C Serum",
     "type": "Serum",
     "price": 58.65,
-    "image": "./images/26.jpg"
+    "image": "./images/26.jpg",
+    "details": "Reduces fine lines, boosts collagen production, and improves skin radiance with pure vitamin C."
   },
   {
     "id": 27,
@@ -213,7 +239,8 @@
     "name": "Charcoal Serum",
     "type": "Serum",
     "price": 14.97,
-    "image": "./images/27.jpg"
+    "image": "./images/27.jpg",
+    "details": "Purifies and detoxifies your skin with charcoal, leaving it clean and refreshed."
   },
   {
     "id": 28,
@@ -221,14 +248,17 @@
     "name": "Ultra Sheer Dry-Touch Sunscreen",
     "type": "Sunscreen",
     "price": 13.50,
-    "image": "./images/28.jpg"
-  },  {
+    "image": "./images/28.jpg",
+    "details": "Lightweight sunscreen that provides broad-spectrum protection without a greasy finish."
+  },
+  {
     "id": 29,
     "brand": "La Roche-Posay",
     "name": "Anthelios Face Sunscreen",
     "type": "Sunscreen",
     "price": 28.00,
-    "image": "./images/29.jpg"
+    "image": "./images/29.jpg",
+    "details": "Offers advanced sun protection with a matte finish, perfect for sensitive skin."
   },
   {
     "id": 30,
@@ -236,7 +266,8 @@
     "name": "Sheer Touch Sunscreen Lotion",
     "type": "Sunscreen",
     "price": 14.97,
-    "image": "./images/30.jpg"
+    "image": "./images/30.jpg",
+    "details": "Combines sun protection with a luxurious feel, leaving your skin silky smooth."
   },
   {
     "id": 31,
@@ -244,7 +275,8 @@
     "name": "Ultra Sport Sunscreen Lotion",
     "type": "Sunscreen",
     "price": 26.90,
-    "image": "./images/31.jpg"
+    "image": "./images/31.jpg",
+    "details": "Water-resistant sunscreen designed for active lifestyles, providing long-lasting protection."
   },
   {
     "id": 32,
@@ -252,7 +284,8 @@
     "name": "Ultra Sheer Moisturizing Serum",
     "type": "Sunscreen",
     "price": 14.39,
-    "image": "./images/32.jpg"
+    "image": "./images/32.jpg",
+    "details": "Hydrates and protects your skin with a weightless, non-greasy formula."
   },
   {
     "id": 33,
@@ -260,7 +293,8 @@
     "name": "Ultra Sheer Body Mist Sunscreen",
     "type": "Sunscreen",
     "price": 14.39,
-    "image": "./images/33.jpg"
+    "image": "./images/33.jpg",
+    "details": "Convenient mist sunscreen for quick, even application with a lightweight finish."
   },
   {
     "id": 34,
@@ -268,7 +302,8 @@
     "name": "Protect+ Mineral Sunscreen Stick",
     "type": "Sunscreen",
     "price": 17.47,
-    "image": "./images/34.jpg"
+    "image": "./images/34.jpg",
+    "details": "A travel-friendly sunscreen stick offering mineral-based protection for sensitive skin."
   },
   {
     "id": 35,
@@ -276,7 +311,8 @@
     "name": "Sensitive Mineral Sunscreen Lotion",
     "type": "Sunscreen",
     "price": 14.98,
-    "image": "./images/35.jpg"
+    "image": "./images/35.jpg",
+    "details": "Chemical-free sunscreen designed for sensitive skin with a mineral-based formula."
   },
   {
     "id": 36,
@@ -284,7 +320,8 @@
     "name": "Anti-Shine Facial Sunscreen Cream",
     "type": "Sunscreen",
     "price": 15.37,
-    "image": "./images/36.jpg"
+    "image": "./images/36.jpg",
+    "details": "Oil-free sunscreen that protects and mattifies for a shine-free finish."
   },
   {
     "id": 37,
@@ -292,7 +329,8 @@
     "name": "ACNE Treatment Foaming Cleanser",
     "type": "Cleanser",
     "price": 20.89,
-    "image": "./images/37.jpg"
+    "image": "./images/37.jpg",
+    "details": "Combats acne and removes excess oil while keeping your skin hydrated."
   },
   {
     "id": 38,
@@ -300,7 +338,8 @@
     "name": "pH Balancing Daily Cleanser",
     "type": "Cleanser",
     "price": 12.48,
-    "image": "./images/38.jpg"
+    "image": "./images/38.jpg",
+    "details": "Maintains your skin's natural pH balance while gently removing impurities."
   },
   {
     "id": 39,
@@ -308,7 +347,8 @@
     "name": "Green Tea Amino Acid Cleansing Foam",
     "type": "Cleanser",
     "price": 16.50,
-    "image": "./images/39.jpg"
+    "image": "./images/39.jpg",
+    "details": "Infused with green tea extract to refresh and nourish your skin."
   },
   {
     "id": 40,
@@ -316,7 +356,8 @@
     "name": "Nourishing Body Milk",
     "type": "Moisturizer",
     "price": 9.37,
-    "image": "./images/40.jpg"
+    "image": "./images/40.jpg",
+    "details": "Provides intense hydration and leaves your skin feeling smooth and supple."
   },
   {
     "id": 41,
@@ -324,7 +365,8 @@
     "name": "Repair and Care Body Lotion",
     "type": "Moisturizer",
     "price": 9.37,
-    "image": "./images/41.jpg"
+    "image": "./images/41.jpg",
+    "details": "Soothes dry, cracked skin while locking in moisture for all-day hydration."
   },
   {
     "id": 42,
@@ -332,7 +374,8 @@
     "name": "Advanced Moisture Therapy",
     "type": "Moisturizer",
     "price": 10.47,
-    "image": "./images/42.jpg"
+    "image": "./images/42.jpg",
+    "details": "Deeply hydrates and repairs the skin barrier for long-lasting softness."
   },
   {
     "id": 43,
@@ -340,7 +383,8 @@
     "name": "Vitamin C Serum Plus",
     "type": "Serum",
     "price": 19.99,
-    "image": "./images/43.jpg"
+    "image": "./images/43.jpg",
+    "details": "Combines vitamin C with other antioxidants to brighten and protect your skin."
   },
   {
     "id": 44,
@@ -348,7 +392,8 @@
     "name": "Triple Bounce Serum",
     "type": "Serum",
     "price": 26.84,
-    "image": "./images/44.jpg"
+    "image": "./images/44.jpg",
+    "details": "Hydrates and plumps the skin for a youthful, radiant appearance."
   },
   {
     "id": 45,
@@ -356,7 +401,8 @@
     "name": "Advanced Snail 96 Mucin Power Essence",
     "type": "Serum",
     "price": 21.88,
-    "image": "./images/45.jpg"
+    "image": "./images/45.jpg",
+    "details": "Powered by snail mucin to repair skin damage and boost hydration levels."
   },
   {
     "id": 46,
@@ -364,14 +410,17 @@
     "name": "Sunscreen Lotion Spf 50",
     "type": "Sunscreen",
     "price": 13.97,
-    "image": "./images/46.jpg"
-  },  {
+    "image": "./images/46.jpg",
+    "details": "Provides SPF 50 protection with a lightweight, fast-absorbing formula."
+  },
+  {
     "id": 47,
     "brand": "Aveeno",
     "name": "Moisturizing Sunscreen SPF 50",
     "type": "Sunscreen",
     "price": 12.10,
-    "image": "./images/47.jpg"
+    "image": "./images/47.jpg",
+    "details": "Combines broad-spectrum sun protection with hydration for softer skin."
   },
   {
     "id": 48,
@@ -379,6 +428,7 @@
     "name": "Clear Face Sunscreen Lotion",
     "type": "Sunscreen",
     "price": 14.97,
-    "image": "./images/48.jpg"
+    "image": "./images/48.jpg",
+    "details": "Oil-free sunscreen specially designed for acne-prone skin, preventing breakouts."
   }
 ]

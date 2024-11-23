@@ -38,6 +38,17 @@ const BuildBundle = () => {
   });
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [selectedModalProduct, setSelectedModalProduct] = React.useState(null); // Track selected product for the modal
+  const handleImageClick = (product) => {
+    setSelectedModalProduct(product); // Set the selected product
+    setIsImageModalOpen(true); // Open the modal
+  };
+  const closeImageModal = () => {
+    setSelectedModalProduct(null); // Clear the selected product
+    setIsImageModalOpen(false); // Close the image modal
+  };
 
   const handleProductSelect = (product) => {
     setSelectedProducts((prev) => ({
@@ -109,6 +120,7 @@ const BuildBundle = () => {
                     onProductSelect={handleProductSelect}
                     onProductDeselect={handleRemoveProduct}
                     selectedProduct={selectedProducts[type]}
+                    handleImageClick={handleImageClick}
                   />
                 </TabPanel>
               )
@@ -239,7 +251,103 @@ const BuildBundle = () => {
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+        </Modal>
+        <Modal isOpen={isImageModalOpen} onClose={closeImageModal} isCentered>
+          <ModalOverlay />
+          <ModalContent maxW="600px" p={4}>
+            {selectedModalProduct && (
+              <>
+                <ModalHeader>{selectedModalProduct.name}</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <Box display="flex" flexDirection="row" gap={3}>
+                    {/* Product Info on the Left */}
+                    <Box flex="1" textAlign="left" pr={2}>
+                      <Text fontSize="lg" fontWeight="bold">
+                        Brand:
+                      </Text>
+                      <Text mb={1}>{selectedModalProduct.brand}</Text>
+
+                      <Text fontSize="lg" fontWeight="bold">
+                        Product Name:
+                      </Text>
+                      <Text mb={1}>{selectedModalProduct.name}</Text>
+
+                      <Text fontSize="lg" fontWeight="bold">
+                        Price:
+                      </Text>
+                      <Text mb={1}>${selectedModalProduct.price.toFixed(2)}</Text>
+
+                      <Text fontSize="lg" fontWeight="bold">
+                        Type:
+                      </Text>
+                      <Text mb={1}>{selectedModalProduct.type}</Text>
+                    </Box>
+
+                    {/* Product Image on the Right */}
+                    <Box
+                      flex="1"
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      maxHeight="200px"
+                      maxWidth="200px"
+                    >
+                      <Image
+                        src={
+                          require(`../data/images/${selectedModalProduct.image
+                            .split("/")
+                            .pop()}`) || null
+                        }
+                        alt={selectedModalProduct.name}
+                        borderRadius="lg"
+                        objectFit="contain"
+                        height="100%"
+                        maxWidth="100%"
+                      />
+                    </Box>
+                  </Box>
+
+                  {/* Details Section Spanning Full Width */}
+                  <Box mt={4}>
+                    <Text fontSize="lg" fontWeight="bold">
+                      Details:
+                    </Text>
+                    <Text>{selectedModalProduct.details || "No details available."}</Text>
+                  </Box>
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button
+                    variant="solid"
+                    colorScheme={
+                      selectedProducts[selectedModalProduct?.type]?.id ===
+                      selectedModalProduct.id
+                        ? "red"
+                        : "blue"
+                    }
+                    onClick={() => {
+                      if (
+                        selectedProducts[selectedModalProduct?.type]?.id ===
+                        selectedModalProduct.id
+                      ) {
+                        handleRemoveProduct(selectedModalProduct.type); // Remove the product
+                      } else {
+                        handleProductSelect(selectedModalProduct); // Add the product
+                      }
+                      closeImageModal(); // Close the modal
+                    }}
+                  >
+                    {selectedProducts[selectedModalProduct?.type]?.id ===
+                    selectedModalProduct.id
+                      ? "Remove"
+                      : "Select"}
+                  </Button>
+                </ModalFooter>
+              </>
+            )}
+          </ModalContent>
+        </Modal>
     </Flex>
   );
 };
@@ -249,6 +357,7 @@ const ProductGrid = ({
   onProductSelect,
   onProductDeselect,
   selectedProduct,
+  handleImageClick
 }) => {
   const theme = useTheme();
   return (
@@ -267,6 +376,8 @@ const ProductGrid = ({
                 maxWidth="10rem"
                 maxHeight="10rem"
                 objectFit="contain"
+                cursor="pointer" // Make the image look clickable
+                onClick={() => handleImageClick(product)} // Open modal
               />
             </Flex>
             <Box p={2}>

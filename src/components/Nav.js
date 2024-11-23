@@ -81,10 +81,13 @@ const Navbar = () => {
             </Button>
             <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is that the user could take a quiz about their skincare needs to get a bundle that is right for them.">
               <Button
+                as={RouterLink}
+                to="/quiz"
                 aria-label="Personalized Bundle"
-                disabled
                 borderRadius="full"
                 size="sm"
+                bg={isBuildBundle ? "primary" : theme.colors.gray[200]}
+                color={isBuildBundle ? "white" : "black"}
                 _hover={{ bg: "secondary", color: "white" }}
               >
                 Personalized Bundles

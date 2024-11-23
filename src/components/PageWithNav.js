@@ -8,12 +8,13 @@ import BuildBundle from "./BuildBundle";
 import Bag from "./Bag";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import SkinCareQuiz from "./Quiz"
 
-const PageWithNav = ({ homePage, bag, buildBundle, signIn, signUp }) => {
+const PageWithNav = ({ homePage, bag, buildBundle, signIn, signUp, quiz }) => {
   return (
     <Box fontFamily="CaviarDreams">
       <Nav />
-      {homePage ? <HomePage /> : buildBundle ? <BuildBundle /> : bag ? <Bag /> : signIn ? <SignIn /> : signUp ? <SignUp /> : <Outlet />}
+      {homePage ? <HomePage /> : buildBundle ? <BuildBundle /> : bag ? <Bag /> : signIn ? <SignIn /> : signUp ? <SignUp /> : quiz ? <SkinCareQuiz /> : <Outlet />}
     </Box>
   );
 };
@@ -24,6 +25,7 @@ PageWithNav.propTypes = {
   buildBundle: PropTypes.bool,
   signIn: PropTypes.bool,
   signUp: PropTypes.bool,
+  quiz: PropTypes.bool,
 };
 
 export default PageWithNav;

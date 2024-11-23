@@ -10,6 +10,7 @@ const ProtectedRoutes = () => {
 			<Route path="/buildBundle" element={<PageWithNav buildBundle />} />
 			<Route path="/signIn" element={<PageWithNav signIn />} />
 			<Route path="/signUp" element={<PageWithNav signUp />} />
+			<Route path="/quiz" element={<PageWithNav quiz />} />
 		</Routes>
 	);
 };

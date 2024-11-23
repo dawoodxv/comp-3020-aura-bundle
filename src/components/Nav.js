@@ -26,6 +26,8 @@ const Navbar = () => {
   const isBuildBundle = location.pathname === "/buildBundle";
   const isBag = location.pathname === "/bag";
   const isSignIn = location.pathname === "/signIn";
+  const isQuiz = location.pathname === "/quiz";
+  const isExploreBundles = location.pathname === "/exploreBundles";
 
   useEffect(() => {
     const countBundlesInBag = () => {
@@ -86,8 +88,8 @@ const Navbar = () => {
                 aria-label="Personalized Bundle"
                 borderRadius="full"
                 size="sm"
-                bg={isBuildBundle ? "primary" : theme.colors.gray[200]}
-                color={isBuildBundle ? "white" : "black"}
+                bg={isQuiz ? "primary" : theme.colors.gray[200]}
+                color={isQuiz ? "white" : "black"}
                 _hover={{ bg: "secondary", color: "white" }}
               >
                 Personalized Bundles
@@ -96,9 +98,12 @@ const Navbar = () => {
             <Tooltip label="This feature is out of the scope of this vertical prototype. However, this feature would allow the user to explore preset bundles.">
               <Button
                 aria-label="Prebuilt Bundles"
-                disabled
+                as={RouterLink}
+                to="/exploreBundles"
                 borderRadius="full"
                 size="sm"
+                bg={isExploreBundles ? "primary" : theme.colors.gray[200]}
+                color={isExploreBundles ? "white" : "black"}
                 _hover={{ bg: "secondary", color: "white" }}
               >
                 Explore Bundles

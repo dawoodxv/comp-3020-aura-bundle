@@ -148,7 +148,7 @@ const Bag = () => {
             Your cart is empty. Please add items to your cart.
           </Text>
         ) : (
-          <Accordion defaultIndex={[0]} allowMultiple>
+          <Accordion allowMultiple>
             {bundles.map((bundle, index) => (
               <AccordionItem
                 key={bundle.id}
@@ -156,57 +156,67 @@ const Bag = () => {
                 border="1px solid #e2e8f0"
                 borderRadius="md"
               >
-                <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    <Text fontWeight="bold">Bundle #{index + 1}</Text>
-                    <Text fontSize="sm">Total: ${bundle.total.toFixed(2)}</Text>
-                    <Flex mt={2}>
-                      {bundle.products.slice(0, 4).map((product, idx) => (
-                        <Image
-                          key={idx}
-                          src={
-                            require(`../data/images/${product.image
-                              .split("/")
-                              .pop()}`) || null
-                          }
-                          boxSize="30px"
-                          mr={2}
-                          borderRadius="md"
-                        />
-                      ))}
-                    </Flex>
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-                <AccordionPanel>
-                  {bundle.products.map((product) => (
-                    <Flex key={product.id} align="center" mb={3}>
-                      <Image
-                        src={
-                          require(`../data/images/${product.image
-                            .split("/")
-                            .pop()}`) || null
-                        }
-                        boxSize="50px"
-                        mr={3}
-                      />
-                      <Box flex="1">
-                        <Text fontWeight="bold">{product.name}</Text>
-                        <Text fontSize="sm">{product.brand}</Text>
-                        <Text fontSize="sm">${product.price.toFixed(2)}</Text>
+                {({ isExpanded }) => (
+                  <>
+                    <AccordionButton>
+                      <Box flex="1" textAlign="left">
+                        <Text fontWeight="bold">Bundle #{index + 1}</Text>
+                        <Text fontSize="sm">
+                          Total: ${bundle.total.toFixed(2)}
+                        </Text>
                       </Box>
-                    </Flex>
-                  ))}
-                  <Button
-                    leftIcon={<FaTrashAlt />}
-                    colorScheme="red"
-                    size="sm"
-                    mt={2}
-                    onClick={() => handleRemoveBundle(bundle.id)}
-                  >
-                    Remove Bundle
-                  </Button>
-                </AccordionPanel>
+                      {!isExpanded && (
+                        <Flex>
+                          {bundle.products.slice(0, 4).map((product, idx) => (
+                            <Image
+                              key={idx}
+                              src={
+                                require(`../data/images/${product.image
+                                  .split("/")
+                                  .pop()}`) || null
+                              }
+                              boxSize="30px"
+                              mr={2}
+                              borderRadius="md"
+                            />
+                          ))}
+                        </Flex>
+                      )}
+                      <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel>
+                      {bundle.products.map((product) => (
+                        <Flex key={product.id} align="center" mb={3}>
+                          <Image
+                            src={
+                              require(`../data/images/${product.image
+                                .split("/")
+                                .pop()}`) || null
+                            }
+                            boxSize="50px"
+                            mr={3}
+                          />
+                          <Box flex="1">
+                            <Text fontWeight="bold">{product.name}</Text>
+                            <Text fontSize="sm">{product.brand}</Text>
+                            <Text fontSize="sm">
+                              ${product.price.toFixed(2)}
+                            </Text>
+                          </Box>
+                        </Flex>
+                      ))}
+                      <Button
+                        leftIcon={<FaTrashAlt />}
+                        colorScheme="red"
+                        size="sm"
+                        mt={2}
+                        onClick={() => handleRemoveBundle(bundle.id)}
+                      >
+                        Remove Bundle
+                      </Button>
+                    </AccordionPanel>
+                  </>
+                )}
               </AccordionItem>
             ))}
           </Accordion>

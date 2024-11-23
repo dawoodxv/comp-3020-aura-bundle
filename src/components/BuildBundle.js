@@ -324,7 +324,7 @@ const BuildBundle = () => {
                       selectedProducts[selectedModalProduct?.type]?.id ===
                       selectedModalProduct.id
                         ? "red"
-                        : "blue"
+                        : "green"
                     }
                     onClick={() => {
                       if (

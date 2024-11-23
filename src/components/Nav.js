@@ -13,16 +13,19 @@ import {
 } from "@chakra-ui/react";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
 import { Link as RouterLink, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const isLargeScreen = useBreakpointValue({ base: false, md: true });
   const location = useLocation();
   const theme = useTheme(); // Get the current theme
   const [bundleCount, setBundleCount] = useState(0);
+  const navigate = useNavigate();
 
   const isHome = location.pathname === "/";
   const isBuildBundle = location.pathname === "/buildBundle";
   const isBag = location.pathname === "/bag";
+  const isSignIn = location.pathname === "/signIn";
 
   useEffect(() => {
     const countBundlesInBag = () => {
@@ -142,10 +145,12 @@ const Navbar = () => {
           <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is to take the user to a sign in/sign up page. A user profile could store a user’s past purchases, favorite items, and skin care needs.">
             <Button
               aria-label="Sign In"
-              disabled
               borderRadius="full"
               size="md"
               _hover={{ bg: "secondary", color: "white" }}
+              onClick={() => navigate("/signIn")}
+              bg={isSignIn ? "primary" : theme.colors.gray[200]}
+              color={isSignIn ? "white" : "black"}
             >
               Sign In
             </Button>

@@ -225,6 +225,9 @@ const Bag = () => {
               isInvalid={touchedFields.email && errors.email}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.email && errors.email && (
+              <Text color="red">{errors.email}</Text>
+            )}
             <Input
               placeholder="First Name"
               name="firstName"
@@ -234,6 +237,9 @@ const Bag = () => {
               isInvalid={touchedFields.firstName && errors.firstName}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.firstName && errors.firstName && (
+              <Text color="red">{errors.firstName}</Text>
+            )}
             <Input
               placeholder="Last Name"
               name="lastName"
@@ -243,6 +249,9 @@ const Bag = () => {
               isInvalid={touchedFields.lastName && errors.lastName}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.lastName && errors.lastName && (
+              <Text color="red">{errors.lastName}</Text>
+            )}
             <Input
               placeholder="Address"
               name="address"
@@ -252,6 +261,9 @@ const Bag = () => {
               isInvalid={touchedFields.address && errors.address}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.address && errors.address && (
+              <Text color="red">{errors.address}</Text>
+            )}
             <Input
               placeholder="City"
               name="city"
@@ -261,6 +273,9 @@ const Bag = () => {
               isInvalid={touchedFields.city && errors.city}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.city && errors.city && (
+              <Text color="red">{errors.city}</Text>
+            )}
             <Select
               name="province"
               value={contactInfo.province || ""}
@@ -284,7 +299,11 @@ const Bag = () => {
               <option value="NU">Nunavut</option>
               <option value="YT">Yukon</option>
             </Select>
+            {touchedFields.province && errors.province && (
+              <Text color="red">{errors.province}</Text>
+            )}
             <Input
+              required
               placeholder="Postal Code"
               name="postalCode"
               value={contactInfo.postalCode || ""}
@@ -293,6 +312,9 @@ const Bag = () => {
               isInvalid={touchedFields.postalCode && errors.postalCode}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.postalCode && errors.postalCode && (
+              <Text color="red">{errors.postalCode}</Text>
+            )}
             <Input
               placeholder="Phone Number"
               name="phone"
@@ -308,7 +330,9 @@ const Bag = () => {
               isInvalid={touchedFields.phone && errors.phone}
               isDisabled={bundles.length === 0}
             />
-
+            {touchedFields.phone && errors.phone && (
+              <Text color="red">{errors.phone}</Text>
+            )}
             <Button
               bg="primary"
               _hover={{ bg: "secondary" }}
@@ -335,6 +359,9 @@ const Bag = () => {
               isInvalid={touchedFields.cardName && errors.cardName}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.cardName && errors.cardName && (
+              <Text color="red">{errors.cardName}</Text>
+            )}
             <Input
               placeholder="Card Number"
               name="cardNumber"
@@ -350,6 +377,9 @@ const Bag = () => {
               isInvalid={touchedFields.cardNumber && errors.cardNumber}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.cardNumber && errors.cardNumber && (
+              <Text color="red">{errors.cardNumber}</Text>
+            )}
             <Input
               placeholder="Expiry Date (MM/YY)"
               name="expiry"
@@ -368,6 +398,9 @@ const Bag = () => {
               isInvalid={touchedFields.expiry && errors.expiry}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.expiry && errors.expiry && (
+              <Text color="red">{errors.expiry}</Text>
+            )}
             <Input
               placeholder="CVV"
               name="cvv"
@@ -383,7 +416,9 @@ const Bag = () => {
               isInvalid={touchedFields.cvv && errors.cvv}
               isDisabled={bundles.length === 0}
             />
-
+            {touchedFields.cvv && errors.cvv && (
+              <Text color="red">{errors.cvv}</Text>
+            )}
             <Button
               bg="primary"
               _hover={{ bg: "secondary" }}

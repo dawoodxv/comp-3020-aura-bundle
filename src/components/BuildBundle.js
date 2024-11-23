@@ -220,7 +220,7 @@ const BuildBundle = () => {
             <Text>Would you like to continue shopping or go to your bag?</Text>
           </ModalBody>
           <ModalFooter>
-            <Button bg="secondary" color="white" mr={3} onClick={() => navigate("/bag")}>
+            <Button bg="primary" color="white" mr={3} _hover={{ bg: "secondary", color: "white" }} onClick={() => navigate("/bag")}>
               Go to Bag
             </Button>
             <Button
@@ -296,7 +296,7 @@ const ProductGrid = ({
                       bg:
                         selectedProduct && selectedProduct.id === product.id
                           ? "red.700"
-                          : "secondary",
+                          : "primary",
                       color: "white",
                     }}
                     onClick={() =>

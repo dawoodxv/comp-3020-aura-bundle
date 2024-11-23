@@ -4,6 +4,9 @@ import {
   Flex,
   Text,
   Button,
+  InputLeftAddon,
+  InputGroup,
+  Grid,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -53,7 +56,6 @@ const Bag = () => {
 
   const handlePlaceOrder = () => {
     localStorage.clear();
-    setBundles([]);
     setStep(4);
   };
 
@@ -139,31 +141,31 @@ const Bag = () => {
 
   return (
     <Flex p={5} align="flex-start" justify="space-between">
-      <Box flex="1" mr={4}>
-        <Text fontSize="2xl" mb={4}>
-          Your Bag
+      <Box flex="1" mr={4} p={4} bg="white" borderRadius="lg" boxShadow="md">
+        <Text fontSize="2xl" fontWeight="bold" mb={6}>
+          {step === 4 ? "Order Receipt" : "Your Bag"}
         </Text>
-        {bundles.length === 0 ? (
-          <Text fontSize="xl" color="gray.500" mb={4}>
-            Your cart is empty. Please add items to your cart.
-          </Text>
-        ) : (
-          <Accordion defaultIndex={[0]} allowMultiple>
-            {bundles.map((bundle, index) => (
-              <AccordionItem
-                key={bundle.id}
-                mb={2}
-                border="1px solid #e2e8f0"
-                borderRadius="md"
-              >
-                <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    <Text fontWeight="bold">Bundle #{index + 1}</Text>
-                    <Text fontSize="sm">Total: ${bundle.total.toFixed(2)}</Text>
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-                <AccordionPanel>
+
+        {step === 4 ? (
+          <Box>
+            <Text fontSize="lg" fontWeight="medium" mb={6}>
+              Thank you for your order! Here's a summary of your purchase:
+            </Text>
+
+            <Grid templateColumns="repeat(2, 1fr)" gap={6} mb={6}>
+              {bundles.map((bundle, index) => (
+                <Box
+                  key={bundle.id}
+                  p={4}
+                  border="1px"
+                  borderColor="gray.200"
+                  borderRadius="md"
+                  bg="gray.50"
+                >
+                  <Text fontWeight="bold" fontSize="xl" mb={4}>
+                    Bundle #{index + 1}
+                  </Text>
+                  <Divider mb={4} />
                   {bundle.products.map((product) => (
                     <Flex key={product.id} align="center" mb={3}>
                       <Image
@@ -173,25 +175,113 @@ const Bag = () => {
                             .pop()}`) || null
                         }
                         boxSize="50px"
-                        mr={3}
+                        mr={4}
+                        borderRadius="md"
                       />
                       <Box flex="1">
                         <Text fontWeight="bold">{product.name}</Text>
-                        <Text fontSize="sm">{product.brand}</Text>
+                        <Text fontSize="sm" color="gray.500">
+                          {product.brand}
+                        </Text>
                         <Text fontSize="sm">${product.price.toFixed(2)}</Text>
                       </Box>
                     </Flex>
                   ))}
-                  <Button
-                    leftIcon={<FaTrashAlt />}
-                    colorScheme="red"
-                    size="sm"
-                    mt={2}
-                    onClick={() => handleRemoveBundle(bundle.id)}
-                  >
-                    Remove Bundle
-                  </Button>
-                </AccordionPanel>
+                  <Text fontWeight="bold" fontSize="lg" mt={4}>
+                    Total: ${bundle.total.toFixed(2)}
+                  </Text>
+                </Box>
+              ))}
+            </Grid>
+
+            <Divider my={6} />
+            <Text fontSize="2xl" fontWeight="bold" textAlign="right">
+              Grand Total: ${totalAmount.toFixed(2)}
+            </Text>
+            <Text mt={4} color="gray.600" fontSize="sm">
+              Thank you for shopping with us!
+            </Text>
+          </Box>
+        ) : bundles.length === 0 ? (
+          <Text fontSize="xl" color="gray.500" mb={4}>
+            Your cart is empty. Please add items to your cart.
+          </Text>
+        ) : (
+          <Accordion allowMultiple>
+            {bundles.map((bundle, index) => (
+              <AccordionItem
+                key={bundle.id}
+                mb={4}
+                border="1px"
+                borderColor="gray.200"
+                borderRadius="md"
+                bg="gray.50"
+              >
+                {({ isExpanded }) => (
+                  <>
+                    <AccordionButton _expanded={{ bg: "gray.100" }}>
+                      <Box flex="1" textAlign="left">
+                        <Text fontWeight="bold">Bundle #{index + 1}</Text>
+                        <Text fontSize="sm">
+                          Total: ${bundle.total.toFixed(2)}
+                        </Text>
+                      </Box>
+                      {!isExpanded && (
+                        <Flex>
+                          {bundle.products.slice(0, 4).map((product, idx) => (
+                            <Image
+                              key={idx}
+                              src={
+                                require(`../data/images/${product.image
+                                  .split("/")
+                                  .pop()}`) || null
+                              }
+                              boxSize="30px"
+                              mr={2}
+                              borderRadius="md"
+                            />
+                          ))}
+                        </Flex>
+                      )}
+                      <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel>
+                      <Box mb={4}>
+                        {bundle.products.map((product) => (
+                          <Flex key={product.id} align="center" mb={3}>
+                            <Image
+                              src={
+                                require(`../data/images/${product.image
+                                  .split("/")
+                                  .pop()}`) || null
+                              }
+                              boxSize="50px"
+                              mr={3}
+                              borderRadius="md"
+                            />
+                            <Box flex="1">
+                              <Text fontWeight="bold">{product.name}</Text>
+                              <Text fontSize="sm">{product.brand}</Text>
+                              <Text fontSize="sm">
+                                ${product.price.toFixed(2)}
+                              </Text>
+                            </Box>
+                          </Flex>
+                        ))}
+                        <Button
+                          leftIcon={<FaTrashAlt />}
+                          colorScheme="red"
+                          size="sm"
+                          mt={4}
+                          onClick={() => handleRemoveBundle(bundle.id)}
+                          w="full"
+                        >
+                          Remove Bundle
+                        </Button>
+                      </Box>
+                    </AccordionPanel>
+                  </>
+                )}
               </AccordionItem>
             ))}
           </Accordion>
@@ -225,6 +315,9 @@ const Bag = () => {
               isInvalid={touchedFields.email && errors.email}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.email && errors.email && (
+              <Text color="red">{errors.email}</Text>
+            )}
             <Input
               placeholder="First Name"
               name="firstName"
@@ -234,6 +327,9 @@ const Bag = () => {
               isInvalid={touchedFields.firstName && errors.firstName}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.firstName && errors.firstName && (
+              <Text color="red">{errors.firstName}</Text>
+            )}
             <Input
               placeholder="Last Name"
               name="lastName"
@@ -243,6 +339,9 @@ const Bag = () => {
               isInvalid={touchedFields.lastName && errors.lastName}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.lastName && errors.lastName && (
+              <Text color="red">{errors.lastName}</Text>
+            )}
             <Input
               placeholder="Address"
               name="address"
@@ -252,6 +351,9 @@ const Bag = () => {
               isInvalid={touchedFields.address && errors.address}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.address && errors.address && (
+              <Text color="red">{errors.address}</Text>
+            )}
             <Input
               placeholder="City"
               name="city"
@@ -261,6 +363,9 @@ const Bag = () => {
               isInvalid={touchedFields.city && errors.city}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.city && errors.city && (
+              <Text color="red">{errors.city}</Text>
+            )}
             <Select
               name="province"
               value={contactInfo.province || ""}
@@ -284,7 +389,11 @@ const Bag = () => {
               <option value="NU">Nunavut</option>
               <option value="YT">Yukon</option>
             </Select>
+            {touchedFields.province && errors.province && (
+              <Text color="red">{errors.province}</Text>
+            )}
             <Input
+              required
               placeholder="Postal Code"
               name="postalCode"
               value={contactInfo.postalCode || ""}
@@ -293,22 +402,30 @@ const Bag = () => {
               isInvalid={touchedFields.postalCode && errors.postalCode}
               isDisabled={bundles.length === 0}
             />
-            <Input
-              placeholder="Phone Number"
-              name="phone"
-              value={contactInfo.phone || ""}
-              onChange={(e) => {
-                const value = e.target.value.replace(/\D/g, "").slice(0, 10);
-                handleFormChange(
-                  { target: { name: "phone", value } },
-                  setContactInfo
-                );
-              }}
-              onBlur={() => updateFormValidity()}
-              isInvalid={touchedFields.phone && errors.phone}
-              isDisabled={bundles.length === 0}
-            />
-
+            {touchedFields.postalCode && errors.postalCode && (
+              <Text color="red">{errors.postalCode}</Text>
+            )}
+            <InputGroup>
+              <InputLeftAddon>+1</InputLeftAddon>
+              <Input
+                placeholder="Phone Number"
+                name="phone"
+                value={contactInfo.phone || ""}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  handleFormChange(
+                    { target: { name: "phone", value } },
+                    setContactInfo
+                  );
+                }}
+                onBlur={() => updateFormValidity()}
+                isInvalid={touchedFields.phone && errors.phone}
+                isDisabled={bundles.length === 0}
+              />
+            </InputGroup>
+            {touchedFields.phone && errors.phone && (
+              <Text color="red">{errors.phone}</Text>
+            )}
             <Button
               bg="primary"
               _hover={{ bg: "secondary" }}
@@ -335,6 +452,9 @@ const Bag = () => {
               isInvalid={touchedFields.cardName && errors.cardName}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.cardName && errors.cardName && (
+              <Text color="red">{errors.cardName}</Text>
+            )}
             <Input
               placeholder="Card Number"
               name="cardNumber"
@@ -350,6 +470,9 @@ const Bag = () => {
               isInvalid={touchedFields.cardNumber && errors.cardNumber}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.cardNumber && errors.cardNumber && (
+              <Text color="red">{errors.cardNumber}</Text>
+            )}
             <Input
               placeholder="Expiry Date (MM/YY)"
               name="expiry"
@@ -368,6 +491,9 @@ const Bag = () => {
               isInvalid={touchedFields.expiry && errors.expiry}
               isDisabled={bundles.length === 0}
             />
+            {touchedFields.expiry && errors.expiry && (
+              <Text color="red">{errors.expiry}</Text>
+            )}
             <Input
               placeholder="CVV"
               name="cvv"
@@ -383,7 +509,9 @@ const Bag = () => {
               isInvalid={touchedFields.cvv && errors.cvv}
               isDisabled={bundles.length === 0}
             />
-
+            {touchedFields.cvv && errors.cvv && (
+              <Text color="red">{errors.cvv}</Text>
+            )}
             <Button
               bg="primary"
               _hover={{ bg: "secondary" }}
@@ -398,18 +526,14 @@ const Bag = () => {
 
         {step === 3 && (
           <Flex direction="column" align="flex-start">
-            <Text fontSize="2xl" mb={4}>
+            <Text fontSize="2xl" mb={4} fontWeight="bold">
               Order Summary
             </Text>
             {bundles.map((bundle, index) => (
-              <Box key={bundle.id} mb={3} w="100%">
+              <Box key={bundle.id} mb={1} w="100%">
                 <Flex justify="space-between" align="center" mb={2}>
-                  <Text fontSize="lg" fontWeight="bold">
-                    Bundle #{index + 1}
-                  </Text>
-                  <Text fontSize="lg" fontWeight="bold">
-                    ${bundle.total.toFixed(2)}
-                  </Text>
+                  <Text fontSize="md">Bundle #{index + 1}</Text>
+                  <Text fontSize="md">${bundle.total.toFixed(2)}</Text>
                 </Flex>
                 <Divider my={3} />
               </Box>
@@ -422,16 +546,17 @@ const Bag = () => {
                 ${totalAmount.toFixed(2)}
               </Text>
             </Flex>
-            <Button
-              bg="primary"
-              _hover={{ bg: "secondary" }}
-              color="white"
-              onClick={handlePlaceOrder}
-              mt={5}
-              isDisabled={!isFormValid}
-            >
-              Place Order
-            </Button>
+            <Flex justify="flex-end" w="100%" mt={3}>
+              <Button
+                bg="primary"
+                _hover={{ bg: "secondary" }}
+                color="white"
+                onClick={handlePlaceOrder}
+                isDisabled={!isFormValid}
+              >
+                Place Order
+              </Button>
+            </Flex>
           </Flex>
         )}
 

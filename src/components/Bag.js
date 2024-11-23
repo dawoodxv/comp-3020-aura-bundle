@@ -160,6 +160,21 @@ const Bag = () => {
                   <Box flex="1" textAlign="left">
                     <Text fontWeight="bold">Bundle #{index + 1}</Text>
                     <Text fontSize="sm">Total: ${bundle.total.toFixed(2)}</Text>
+                    <Flex mt={2}>
+                      {bundle.products.slice(0, 4).map((product, idx) => (
+                        <Image
+                          key={idx}
+                          src={
+                            require(`../data/images/${product.image
+                              .split("/")
+                              .pop()}`) || null
+                          }
+                          boxSize="30px"
+                          mr={2}
+                          borderRadius="md"
+                        />
+                      ))}
+                    </Flex>
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>

@@ -583,7 +583,7 @@ const Bag = () => {
         <Progress
           value={(step / 4) * 100}
           size="sm"
-          colorScheme="blue"
+          colorScheme="green"
           mt={4}
         />
       </Box>

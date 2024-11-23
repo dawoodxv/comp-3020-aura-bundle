@@ -4,6 +4,9 @@ import {
   Flex,
   Text,
   Button,
+  InputLeftAddon,
+  InputGroup,
+  Grid,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -53,7 +56,6 @@ const Bag = () => {
 
   const handlePlaceOrder = () => {
     localStorage.clear();
-    setBundles([]);
     setStep(4);
   };
 
@@ -139,11 +141,68 @@ const Bag = () => {
 
   return (
     <Flex p={5} align="flex-start" justify="space-between">
-      <Box flex="1" mr={4}>
-        <Text fontSize="2xl" mb={4}>
-          Your Bag
+      <Box flex="1" mr={4} p={4} bg="white" borderRadius="lg" boxShadow="md">
+        <Text fontSize="2xl" fontWeight="bold" mb={6}>
+          {step === 4 ? "Order Receipt" : "Your Bag"}
         </Text>
-        {bundles.length === 0 ? (
+
+        {step === 4 ? (
+          <Box>
+            <Text fontSize="lg" fontWeight="medium" mb={6}>
+              Thank you for your order! Here's a summary of your purchase:
+            </Text>
+
+            <Grid templateColumns="repeat(2, 1fr)" gap={6} mb={6}>
+              {bundles.map((bundle, index) => (
+                <Box
+                  key={bundle.id}
+                  p={4}
+                  border="1px"
+                  borderColor="gray.200"
+                  borderRadius="md"
+                  bg="gray.50"
+                >
+                  <Text fontWeight="bold" fontSize="xl" mb={4}>
+                    Bundle #{index + 1}
+                  </Text>
+                  <Divider mb={4} />
+                  {bundle.products.map((product) => (
+                    <Flex key={product.id} align="center" mb={3}>
+                      <Image
+                        src={
+                          require(`../data/images/${product.image
+                            .split("/")
+                            .pop()}`) || null
+                        }
+                        boxSize="50px"
+                        mr={4}
+                        borderRadius="md"
+                      />
+                      <Box flex="1">
+                        <Text fontWeight="bold">{product.name}</Text>
+                        <Text fontSize="sm" color="gray.500">
+                          {product.brand}
+                        </Text>
+                        <Text fontSize="sm">${product.price.toFixed(2)}</Text>
+                      </Box>
+                    </Flex>
+                  ))}
+                  <Text fontWeight="bold" fontSize="lg" mt={4}>
+                    Total: ${bundle.total.toFixed(2)}
+                  </Text>
+                </Box>
+              ))}
+            </Grid>
+
+            <Divider my={6} />
+            <Text fontSize="2xl" fontWeight="bold" textAlign="right">
+              Grand Total: ${totalAmount.toFixed(2)}
+            </Text>
+            <Text mt={4} color="gray.600" fontSize="sm">
+              Thank you for shopping with us!
+            </Text>
+          </Box>
+        ) : bundles.length === 0 ? (
           <Text fontSize="xl" color="gray.500" mb={4}>
             Your cart is empty. Please add items to your cart.
           </Text>
@@ -152,13 +211,15 @@ const Bag = () => {
             {bundles.map((bundle, index) => (
               <AccordionItem
                 key={bundle.id}
-                mb={2}
-                border="1px solid #e2e8f0"
+                mb={4}
+                border="1px"
+                borderColor="gray.200"
                 borderRadius="md"
+                bg="gray.50"
               >
                 {({ isExpanded }) => (
                   <>
-                    <AccordionButton>
+                    <AccordionButton _expanded={{ bg: "gray.100" }}>
                       <Box flex="1" textAlign="left">
                         <Text fontWeight="bold">Bundle #{index + 1}</Text>
                         <Text fontSize="sm">
@@ -185,35 +246,39 @@ const Bag = () => {
                       <AccordionIcon />
                     </AccordionButton>
                     <AccordionPanel>
-                      {bundle.products.map((product) => (
-                        <Flex key={product.id} align="center" mb={3}>
-                          <Image
-                            src={
-                              require(`../data/images/${product.image
-                                .split("/")
-                                .pop()}`) || null
-                            }
-                            boxSize="50px"
-                            mr={3}
-                          />
-                          <Box flex="1">
-                            <Text fontWeight="bold">{product.name}</Text>
-                            <Text fontSize="sm">{product.brand}</Text>
-                            <Text fontSize="sm">
-                              ${product.price.toFixed(2)}
-                            </Text>
-                          </Box>
-                        </Flex>
-                      ))}
-                      <Button
-                        leftIcon={<FaTrashAlt />}
-                        colorScheme="red"
-                        size="sm"
-                        mt={2}
-                        onClick={() => handleRemoveBundle(bundle.id)}
-                      >
-                        Remove Bundle
-                      </Button>
+                      <Box mb={4}>
+                        {bundle.products.map((product) => (
+                          <Flex key={product.id} align="center" mb={3}>
+                            <Image
+                              src={
+                                require(`../data/images/${product.image
+                                  .split("/")
+                                  .pop()}`) || null
+                              }
+                              boxSize="50px"
+                              mr={3}
+                              borderRadius="md"
+                            />
+                            <Box flex="1">
+                              <Text fontWeight="bold">{product.name}</Text>
+                              <Text fontSize="sm">{product.brand}</Text>
+                              <Text fontSize="sm">
+                                ${product.price.toFixed(2)}
+                              </Text>
+                            </Box>
+                          </Flex>
+                        ))}
+                        <Button
+                          leftIcon={<FaTrashAlt />}
+                          colorScheme="red"
+                          size="sm"
+                          mt={4}
+                          onClick={() => handleRemoveBundle(bundle.id)}
+                          w="full"
+                        >
+                          Remove Bundle
+                        </Button>
+                      </Box>
                     </AccordionPanel>
                   </>
                 )}
@@ -340,21 +405,24 @@ const Bag = () => {
             {touchedFields.postalCode && errors.postalCode && (
               <Text color="red">{errors.postalCode}</Text>
             )}
-            <Input
-              placeholder="Phone Number"
-              name="phone"
-              value={contactInfo.phone || ""}
-              onChange={(e) => {
-                const value = e.target.value.replace(/\D/g, "").slice(0, 10);
-                handleFormChange(
-                  { target: { name: "phone", value } },
-                  setContactInfo
-                );
-              }}
-              onBlur={() => updateFormValidity()}
-              isInvalid={touchedFields.phone && errors.phone}
-              isDisabled={bundles.length === 0}
-            />
+            <InputGroup>
+              <InputLeftAddon>+1</InputLeftAddon>
+              <Input
+                placeholder="Phone Number"
+                name="phone"
+                value={contactInfo.phone || ""}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  handleFormChange(
+                    { target: { name: "phone", value } },
+                    setContactInfo
+                  );
+                }}
+                onBlur={() => updateFormValidity()}
+                isInvalid={touchedFields.phone && errors.phone}
+                isDisabled={bundles.length === 0}
+              />
+            </InputGroup>
             {touchedFields.phone && errors.phone && (
               <Text color="red">{errors.phone}</Text>
             )}
@@ -458,18 +526,14 @@ const Bag = () => {
 
         {step === 3 && (
           <Flex direction="column" align="flex-start">
-            <Text fontSize="2xl" mb={4}>
+            <Text fontSize="2xl" mb={4} fontWeight="bold">
               Order Summary
             </Text>
             {bundles.map((bundle, index) => (
-              <Box key={bundle.id} mb={3} w="100%">
+              <Box key={bundle.id} mb={1} w="100%">
                 <Flex justify="space-between" align="center" mb={2}>
-                  <Text fontSize="lg" fontWeight="bold">
-                    Bundle #{index + 1}
-                  </Text>
-                  <Text fontSize="lg" fontWeight="bold">
-                    ${bundle.total.toFixed(2)}
-                  </Text>
+                  <Text fontSize="md">Bundle #{index + 1}</Text>
+                  <Text fontSize="md">${bundle.total.toFixed(2)}</Text>
                 </Flex>
                 <Divider my={3} />
               </Box>
@@ -482,16 +546,17 @@ const Bag = () => {
                 ${totalAmount.toFixed(2)}
               </Text>
             </Flex>
-            <Button
-              bg="primary"
-              _hover={{ bg: "secondary" }}
-              color="white"
-              onClick={handlePlaceOrder}
-              mt={5}
-              isDisabled={!isFormValid}
-            >
-              Place Order
-            </Button>
+            <Flex justify="flex-end" w="100%" mt={3}>
+              <Button
+                bg="primary"
+                _hover={{ bg: "secondary" }}
+                color="white"
+                onClick={handlePlaceOrder}
+                isDisabled={!isFormValid}
+              >
+                Place Order
+              </Button>
+            </Flex>
           </Flex>
         )}
 

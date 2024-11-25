@@ -58,7 +58,8 @@ const HomePage = () => {
           <HStack spacing={4} width="100%" justify="center" mb={4}>
             <Tooltip label="This feature is out of the scope of this vertical prototype. However, this feature would allow the user to explore preset bundles.">
               <Button
-                disabled
+                as={RouterLink}
+                to="/ExploreBundles"
                 bg="primary"
                 color="white"
                 _hover={{ bg: "secondary" }}
@@ -87,7 +88,8 @@ const HomePage = () => {
             </Button>
             <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is that the user could take a quiz about their skincare needs to get a bundle that is right for them.">   
               <Button
-                disabled
+                as={RouterLink}
+                to="/Quiz"
                 bg="primary"
                 color="white"
                 _hover={{ bg: "secondary" }}

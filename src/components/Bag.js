@@ -177,6 +177,7 @@ const Bag = () => {
                         boxSize="50px"
                         mr={4}
                         borderRadius="md"
+                        objectFit="contain"
                       />
                       <Box flex="1">
                         <Text fontWeight="bold">{product.name}</Text>
@@ -239,6 +240,7 @@ const Bag = () => {
                               boxSize="30px"
                               mr={2}
                               borderRadius="md"
+                              objectFit="contain"
                             />
                           ))}
                         </Flex>
@@ -258,6 +260,7 @@ const Bag = () => {
                               boxSize="50px"
                               mr={3}
                               borderRadius="md"
+                              objectFit="contain"
                             />
                             <Box flex="1">
                               <Text fontWeight="bold">{product.name}</Text>

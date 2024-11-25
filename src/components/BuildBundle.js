@@ -320,12 +320,19 @@ const BuildBundle = () => {
                 <ModalFooter>
                   <Button
                     variant="solid"
-                    colorScheme={
+                    bg={
                       selectedProducts[selectedModalProduct?.type]?.id ===
                       selectedModalProduct.id
-                        ? "red"
-                        : "green"
+                        ? "red.500"
+                        : "primary"
                     }
+                    _hover={
+                      selectedProducts[selectedModalProduct?.type]?.id ===
+                      selectedModalProduct.id
+                        ? { bg: "red.700" }
+                        : { bg: "secondary" }
+                    }
+                    color="white"
                     onClick={() => {
                       if (
                         selectedProducts[selectedModalProduct?.type]?.id ===

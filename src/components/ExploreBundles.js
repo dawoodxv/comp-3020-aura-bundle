@@ -77,12 +77,23 @@ const ExploreBundles = () => {
               fontSize="lg"
               fontWeight="bold"
               p={6} 
+              borderRadius="md"
               cursor="pointer"
               borderBottom="1px solid"
+              backgroundColor={
+                selectedBundle?.name === bundle.name
+                  ? theme.colors.primary 
+                  : "white" 
+              }
+              color={
+                selectedBundle?.name === bundle.name
+                  ? "white" 
+                  : theme.colors.text
+              }
               borderColor={selectedBundle?.name === bundle.name ? theme.colors.primary : theme.colors.textLight}
               onClick={() => handleBundleClick(bundle)}
               _hover={{
-                backgroundColor: theme.colors.primary,
+                backgroundColor: theme.colors.secondary,
                 color: theme.colors.accent,
               }}
             >
@@ -110,7 +121,7 @@ const ExploreBundles = () => {
                         src={
                           require(`../data/images/${product.image.split("/").pop()}`) || null
                         }
-                        boxSize="80px" // Larger image size
+                        boxSize="80px"
                         mr={4}
                         borderRadius="md"
                         objectFit="contain"

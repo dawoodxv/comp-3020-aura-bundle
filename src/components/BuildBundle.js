@@ -36,6 +36,7 @@ const BuildBundle = () => {
     Serum: null,
     Sunscreen: null,
   });
+  const [isFavorited, setIsFavorited] = useState(false);
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   
@@ -208,16 +209,29 @@ const BuildBundle = () => {
               ${totalPrice.toFixed(2)}
             </Text>
           </Flex>
-          <Box mt={2} textAlign="right">
-            <Button
-              bg="primary"
-              _hover={{ bg: "secondary" }}
-              color="white"
-              onClick={handleAddToBag}
-              isDisabled={!allProductsSelected}
-            >
-              Add to Bag
-            </Button>
+          <Box mt={2}>
+            <Flex justify="space-between" align="center">
+              <Button
+                bg={isFavorited ? "primary" : "white"}
+                color={isFavorited ? "white" : "primary"}
+                _hover={{ bg: isFavorited ? "red.700" : "gray.100" }}
+                border="1px solid"
+                borderColor="primary"
+                onClick={() => setIsFavorited((prev) => !prev)}
+                isDisabled={!allProductsSelected}
+              >
+                {isFavorited ? "Unfavorite" : "Favorite"}
+              </Button>
+              <Button
+                bg="primary"
+                _hover={{ bg: "secondary" }}
+                color="white"
+                onClick={handleAddToBag}
+                isDisabled={!allProductsSelected}
+              >
+                Add to Bag
+              </Button>
+            </Flex>
           </Box>
         </Box>
       </Box>

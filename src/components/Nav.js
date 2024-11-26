@@ -115,9 +115,10 @@ const Navbar = () => {
         <HStack spacing={4}>
           <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is to allow the user to store their favorite bundles and items to quickly purchase without going through more steps.">
             <IconButton
+              as={RouterLink}
+              to="/Favorites"
               aria-label="Favorites"
               icon={<FaHeart />}
-              disabled
               isRound
               size="lg"
               _hover={{ bg: "secondary", color: "white" }}

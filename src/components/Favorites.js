@@ -2,40 +2,14 @@ import React, { useState } from "react";
 import { Box, Text, VStack, Button, Flex, Divider, Heading,Image, useTheme } from "@chakra-ui/react";
 import { fetchProduct } from "../api/ApiClient";
 
-const ExploreBundles = () => {
+const Favorites = () => {
   const theme = useTheme();
 
   const bundles = [
     {
-      name: "CeraVe Bundle",
-      description: "A skincare routine for hydration and acne care.",
-      productIds: [2, 10, 19, 35]
+      name: "Saved Bundle 1",
+      productIds: [39, 12, 43, 35],
     },
-    {
-      name: "Cetaphil Bundle",
-      description: "A gentle skincare routine for sensitive skin.",
-      productIds: [1, 12, 24, 35]
-    },
-    {
-      name: "Neutrogena Bundle",
-      description: "A comprehensive skincare routine for hydration and sun protection.",
-      productIds: [7, 13, 23, 35]
-    },    
-    {
-      name: "Radiance Skincare Bundle",
-      description: "A mix of high-quality products for glowing skin.",
-      productIds: [6, 11, 20, 31]
-    },
-    {
-      name: "Hydration Care Bundle",
-      description: "Perfect for keeping your skin soft and moisturized.",
-      productIds: [8, 14, 25, 36]
-    },
-    {
-      name: "Essential Skincare Bundle",
-      description: "Essential products to cover all your skincare needs.",
-      productIds: [39, 18, 43, 35]
-    }            
   ];
 
   const [selectedBundle, setSelectedBundle] = useState(null);
@@ -56,7 +30,7 @@ const ExploreBundles = () => {
       {/* Banner Section */}
       <Box bg={theme.colors.primary} color={theme.colors.accent} py={4}>
         <Heading textAlign="center" fontSize="2xl" fontFamily="inherit">
-          Our Bundles
+          Your Saved Bundles
         </Heading>
       </Box>
       <Divider borderColor={theme.colors.textLight} />
@@ -124,9 +98,6 @@ const ExploreBundles = () => {
               <Text fontSize="2xl" fontWeight="bold" mb={4}>
                 {selectedBundle.name}
               </Text>
-              <Text fontSize="lg" mb={6} lineHeight="tall">
-                {selectedBundle.description}
-              </Text>
 
               <VStack spacing={6} align="stretch" overflowY="scroll" width="100%">
                 {products.map((product, index) => (
@@ -185,4 +156,4 @@ const ExploreBundles = () => {
   );
 };
 
-export default ExploreBundles;
+export default Favorites;

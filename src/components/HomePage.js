@@ -56,7 +56,7 @@ const HomePage = () => {
           height="100%"
         >
           <HStack spacing={4} width="100%" justify="center" mb={4}>
-            <Tooltip label="This feature is out of the scope of this vertical prototype. However, this feature would allow the user to explore preset bundles.">
+            <Tooltip label="This feature has been implemented horizontally, functionality is limited to demonstration.">
               <Button
                 as={RouterLink}
                 to="/ExploreBundles"
@@ -72,21 +72,23 @@ const HomePage = () => {
                 Explore Bundles
               </Button>
             </Tooltip>
-            <Button
-              as={RouterLink}
-              to="/buildBundle"
-              bg="primary"
-              color="white"
-              _hover={{ bg: "secondary" }}
-              size="lg"
-              flexGrow={1}
-              minWidth="120px"
-              maxWidth="200px"
-              isTruncated
-            >
-              Build Your Own Bundle
-            </Button>
-            <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is that the user could take a quiz about their skincare needs to get a bundle that is right for them.">   
+            <Tooltip label = "The focus of this vertical prototype.">
+              <Button
+                as={RouterLink}
+                to="/buildBundle"
+                bg="primary"
+                color="white"
+                _hover={{ bg: "secondary" }}
+                size="lg"
+                flexGrow={1}
+                minWidth="120px"
+                maxWidth="200px"
+                isTruncated
+              >
+                Build Your Own Bundle
+              </Button>
+            </Tooltip>
+            <Tooltip label="This feature has been implemented horizontally, functionality is limited to demonstration.">   
               <Button
                 as={RouterLink}
                 to="/Quiz"

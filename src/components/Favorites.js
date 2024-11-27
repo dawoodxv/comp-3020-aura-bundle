@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, VStack, Button, Flex, Divider, Heading,Image, useTheme } from "@chakra-ui/react";
+import { Box, Text, VStack, Button, Flex, Divider, Heading,Image, useTheme, Tooltip } from "@chakra-ui/react";
 import { fetchProduct } from "../api/ApiClient";
 
 const Favorites = () => {
@@ -140,9 +140,11 @@ const Favorites = () => {
 
               {/* Add to Bag Button */}
               <Flex justify="center" mt={4}> {/* Reduced margin-top to 4 */}
-                <Button bg={theme.colors.primary} color={theme.colors.accent} size="lg" _hover={{ bg: theme.colors.secondary }}>
-                  Add to Bag
-                </Button>
+                <Tooltip label="This is where the horizontal implementation ends. Bundle would simply be added to cart at this point. Accompanied by a pop up, (see build bundle behavior).">
+                  <Button bg={theme.colors.primary} color={theme.colors.accent} size="lg" _hover={{ bg: theme.colors.secondary }}>
+                    Add to Bag
+                  </Button>
+                </Tooltip>
               </Flex>
             </>
           ) : (

@@ -69,19 +69,21 @@ const Navbar = () => {
             >
               Home
             </Button>
-            <Button
-              as={RouterLink}
-              to="/buildBundle"
-              aria-label="Build Your Own Bundle"
-              borderRadius="full"
-              size="sm"
-              bg={isBuildBundle ? "primary" : theme.colors.gray[200]}
-              color={isBuildBundle ? "white" : "black"}
-              _hover={{ bg: "secondary", color: "white" }}
-            >
-              Build a Bundle
-            </Button>
-            <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is that the user could take a quiz about their skincare needs to get a bundle that is right for them.">
+            <Tooltip label = "The focus of this vertical prototype.">
+              <Button
+                as={RouterLink}
+                to="/buildBundle"
+                aria-label="Build Your Own Bundle"
+                borderRadius="full"
+                size="sm"
+                bg={isBuildBundle ? "primary" : theme.colors.gray[200]}
+                color={isBuildBundle ? "white" : "black"}
+                _hover={{ bg: "secondary", color: "white" }}
+              >
+                Build a Bundle
+              </Button>
+            </Tooltip>
+            <Tooltip label="This feature has been implemented horizontally, functionality is limited to demonstration.">
               <Button
                 as={RouterLink}
                 to="/quiz"
@@ -95,7 +97,7 @@ const Navbar = () => {
                 Personalized Bundles
               </Button>
             </Tooltip>
-            <Tooltip label="This feature is out of the scope of this vertical prototype. However, this feature would allow the user to explore preset bundles.">
+            <Tooltip label="This feature has been implemented horizontally, functionality is limited to demonstration.">
               <Button
                 aria-label="Prebuilt Bundles"
                 as={RouterLink}
@@ -113,7 +115,7 @@ const Navbar = () => {
         )}
 
         <HStack spacing={4}>
-          <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is to allow the user to store their favorite bundles and items to quickly purchase without going through more steps.">
+          <Tooltip label="This feature has been implemented horizontally, functionality is limited to demonstration.">
             <IconButton
               as={RouterLink}
               to="/Favorites"
@@ -151,7 +153,7 @@ const Navbar = () => {
               </Circle>
             )}
           </Box>
-          <Tooltip label="This feature is out of the scope of this vertical prototype. However, the idea is to take the user to a sign in/sign up page. A user profile could store a user’s past purchases, favorite items, and skin care needs.">
+          <Tooltip label="This feature has been implemented horizontally, functionality is limited to demonstration.">
             <Button
               aria-label="Sign In"
               borderRadius="full"

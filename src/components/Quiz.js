@@ -10,7 +10,8 @@ import {
   Flex,
   useTheme,
   Heading,
-  Divider
+  Divider,
+  Tooltip
 } from "@chakra-ui/react";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -167,20 +168,22 @@ const SkinCareQuiz = () => {
               <Text>
                 <strong>Age Range:</strong> {answers.ageRange || "N/A"}
               </Text>
-              <Button
-                mt={4}
-                bg={theme.colors.secondary}
-                color={"white"}
-                _hover={{
-                  bg: theme.colors.tertiary,
-                  boxShadow: "inset 0 0 5px rgba(0, 0, 0, 0.5)",
-                }}
-                size="lg"
-                width="100%"
-                boxShadow="inset 0 0 5px rgba(0, 0, 0, 0.3)"
-              >
-                Get Personalized Bundle
-              </Button>
+              <Tooltip label = "This is where the horizontal implementation ends. This button will return a personalized bundle for the user to either favorite or add to bag.">
+                <Button
+                  mt={4}
+                  bg={theme.colors.secondary}
+                  color={"white"}
+                  _hover={{
+                    bg: theme.colors.tertiary,
+                    boxShadow: "inset 0 0 5px rgba(0, 0, 0, 0.5)",
+                  }}
+                  size="lg"
+                  width="100%"
+                  boxShadow="inset 0 0 5px rgba(0, 0, 0, 0.3)"
+                >
+                  Get Personalized Bundle
+                </Button>
+              </Tooltip>
             </Stack>
           )}
 

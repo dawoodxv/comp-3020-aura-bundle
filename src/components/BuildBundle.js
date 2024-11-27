@@ -24,6 +24,7 @@ import {
   ModalBody,
   ModalCloseButton,
   Progress,
+  Tooltip,
 } from "@chakra-ui/react";
 import { fetchProductsByType } from "../api/ApiClient";
 import { useNavigate } from "react-router-dom";
@@ -211,17 +212,19 @@ const BuildBundle = () => {
           </Flex>
           <Box mt={2}>
             <Flex justify="space-between" align="center">
-              <Button
-                bg={isFavorited ? "primary" : "white"}
-                color={isFavorited ? "white" : "primary"}
-                _hover={{ bg: isFavorited ? "red.700" : "gray.100" }}
-                border="1px solid"
-                borderColor="primary"
-                onClick={() => setIsFavorited((prev) => !prev)}
-                isDisabled={!allProductsSelected}
-              >
-                {isFavorited ? "Unfavorite" : "Favorite"}
-              </Button>
+              <Tooltip label = "This is where the horizontal implementation ends. User created bundle (in current state) would be saved to Favourites page.">
+                <Button
+                  bg={isFavorited ? "primary" : "white"}
+                  color={isFavorited ? "white" : "primary"}
+                  _hover={{ bg: isFavorited ? "red.700" : "gray.100" }}
+                  border="1px solid"
+                  borderColor="primary"
+                  onClick={() => setIsFavorited((prev) => !prev)}
+                  isDisabled={!allProductsSelected}
+                >
+                  {isFavorited ? "Unfavorite" : "Favorite"}
+                </Button>
+              </Tooltip>
               <Button
                 bg="primary"
                 _hover={{ bg: "secondary" }}

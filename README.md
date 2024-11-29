@@ -9,6 +9,8 @@ or you can follow this link to a static page: https://delightful-stone-002228c1e
 ### Available Scripts
 
 In the project directory, you can run:
+### 'npm install'
+Run this before attempting the later commands.
 
 ### `npm start`
 

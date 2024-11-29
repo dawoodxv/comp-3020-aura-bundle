@@ -2,10 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-To run this app you can either follow the instruction below to compile, and run the site on your machine, or you can followthis link to a static page:
-https://delightful-stone-002228c1e.5.azurestaticapps.net/
+To run this app you can either follow the instruction below to compile, and run the site on your machine, 
+or you can followthis link to a static page: https://delightful-stone-002228c1e.5.azurestaticapps.net/
 
-## How to Run on Your \Machine
+## How to Run on Your Machine
 ### Available Scripts
 
 In the project directory, you can run:

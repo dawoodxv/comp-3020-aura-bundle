@@ -92,7 +92,7 @@ const SkinCareQuiz = () => {
 
           {step === 2 && (
             <Stack spacing={4} mt={4}>
-              <Text fontSize="lg" fontWeight="bold" textAlign="left">
+              <Text fontSize="lg" fontWeight="bold" textAlign="center">
                 What is your skin type?
               </Text>
               <RadioGroup
@@ -112,7 +112,7 @@ const SkinCareQuiz = () => {
 
           {step === 3 && (
             <Stack spacing={4} mt={4}>
-              <Text fontSize="lg" fontWeight="bold" textAlign="left">
+              <Text fontSize="lg" fontWeight="bold" textAlign="center">
                 What is your skin goal?
               </Text>
               <RadioGroup
@@ -132,7 +132,7 @@ const SkinCareQuiz = () => {
 
           {step === 4 && (
             <Stack spacing={4} mt={4}>
-              <Text fontSize="lg" fontWeight="bold" textAlign="left">
+              <Text fontSize="lg" fontWeight="bold" textAlign="center">
                 How old are you?
               </Text>
               <RadioGroup
